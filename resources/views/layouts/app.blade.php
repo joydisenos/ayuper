@@ -10,11 +10,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
@@ -22,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-secondary navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark bg-transparent-gray navbar-laravel fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="https://ayuper.es/wp-content/uploads/2018/03/logotipo_opt-1.png" height="30" alt="">
@@ -41,12 +43,18 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://ayuper.es/blog/">Blog</a>
+                            </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">encuentra tu trabajo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('alta') }}">localiza tu ayuper!</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -58,17 +66,12 @@
                                     <a href="{{ route('perfil') }}" class="dropdown-item">
                                         Perfil
                                     </a>
-                                    <a href="{{ route('password') }}" class="dropdown-item">
-                                        Contraseña
-                                    </a>
-                                    <a href="{{ route('notificaciones') }}" class="dropdown-item">
+                                   
+                                    <!--<a href="{{ route('notificaciones') }}" class="dropdown-item">
                                         Notificaciones
-                                    </a>
-                                    <a href="{{ route('tareas') }}" class="dropdown-item">
-                                        Historial de Tareas
-                                    </a>
-                                    <a href="{{ route('nuevatarea') }}" class="dropdown-item">
-                                        Crear nueva tarea
+                                    </a>-->
+                                    <a href="{{ route('mistareas') }}" class="dropdown-item d-flex justify-content-between align-items-center">
+                                        Mis tareas {{ Auth::user()->tareas->count() }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -86,9 +89,9 @@
                 </div>
             </div>
         </nav>
+        <div class="banner"></div>
 
         <main class="py-4">
-             @include('includes.notificacion')
             @yield('content')
         </main>
     </div>

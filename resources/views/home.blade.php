@@ -5,25 +5,26 @@
     <div class="row justify-content-center mb-4">
         <div class="col-md-4">
             @include('includes.panel')
+            
         </div>
         
-       
             <div class="col-md-8">
-                 @foreach($tareas as $tarea)
-            <div class="row mb-4">
-                <div class="col-md-12">
-                    <div class="card item">
-                        <div class="card-header bg-secondary text-light">{{ $tarea->nombre }}</div>
-
-                        <div class="card-body">
-
-                            {{ $tarea->descripcion }}
-                        </div>
+        @include('includes.notificacion')
+                @if(Auth::user()->perfil == null)
+                    <div class="alert alert-warning" role="alert">
+                            Para encontrar trabajos cercanos deber completar tu perfil! <a href="{{ route('perfil') }}" class="btn btn-outline-secondary">Perfil</a>
                     </div>
-                </div>
-                 
-            </div>
-       @endforeach
+                @else
+                    @if($tareas->count() == 0)
+                        <div class="alert alert-warning" role="alert">
+                                En estos momentos no hay trabajos cercanos pero mantente atento cuando soliciten sus servicios
+                        </div>
+                    @endif
+                    @foreach($tareas as $tarea)
+                       @include('includes.item') 
+                    @endforeach
+                @endif
+        
             
         </div>
     </div>

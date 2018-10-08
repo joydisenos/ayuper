@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Tarea;
 
 class SiteController extends Controller
@@ -25,7 +26,10 @@ class SiteController extends Controller
     public function index()
     {
 
-        $tareas = Tarea::all();
+        $tareas = Tarea::where('estatus',0)
+                ->where('codigo', Auth::user()->codigo)
+                ->orderBy('created_at','desc')
+                ->get();
 
         return view('home',compact('tareas'));
     }

@@ -14,9 +14,18 @@ class TareaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $userId = Auth::user()->id;
+        $tareas = Tarea::where('user_id',$userId)->get();
+
+        return view('tareas.mistareas',compact('tareas'));
     }
 
     /**
@@ -75,7 +84,9 @@ class TareaController extends Controller
      */
     public function show($id)
     {
-        //
+        $tarea = Tarea::findOrFail($id);
+
+        return view('tareas.tarea',compact('tarea'));
     }
 
     /**
@@ -86,7 +97,10 @@ class TareaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tarea = Tarea::findOrFail($id);
+        $servicios = Servicio::where('estatus',1)->get();
+
+        return view('tareas.modificartarea',compact('tarea','servicios'));
     }
 
     /**
@@ -98,7 +112,32 @@ class TareaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+        'lista' => 'required',
+        'nombre' => 'required|min:3|max:255',
+        'descripcion' => 'required|min:3',
+        'fechainicio' => 'required',
+        'fechafinal' => 'required',
+        'frecuencia' => 'required',
+        'horas' => 'required',
+        'codigo' => 'required|numeric',
+        ]);
+
+        $userId = Auth::user()->id;
+
+        $tarea = Tarea::findOrFail($id);
+        $tarea->servicio_id = $request->lista;
+        $tarea->user_id = $userId;
+        $tarea->nombre = $request->nombre;
+        $tarea->descripcion = $request->descripcion;
+        $tarea->inicio = $request->fechainicio;
+        $tarea->final = $request->fechafinal;
+        $tarea->frecuencia = $request->frecuencia;
+        $tarea->horas = $request->horas;
+        $tarea->codigo = $request->codigo;
+        $tarea->save();
+
+        return redirect()->back()->with('status','Tarea modificada correctamente');
     }
 
     /**
@@ -109,6 +148,10 @@ class TareaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tarea = Tarea::findOrFail($id);
+        $tarea->estatus = 3;
+        $tarea->save();
+
+        return redirect()->back()->with('status','Tarea eliminada');
     }
 }

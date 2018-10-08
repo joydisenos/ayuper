@@ -1,20 +1,39 @@
 <ul class="list-group">
-			<a href="{{ route('perfil') }}">
+			<a href="{{ route('home') }}">
 				<li class="list-group-item d-flex justify-content-between align-items-center">
-              		Perfil 
+              		Inicio
                 </li>	
 			</a>
 
-            <a href="{{ route('nuevatarea') }}">
-              	<li class="list-group-item d-flex justify-content-between align-items-center">
-              		Crear Tarea 
-                </li>
-            </a>
-            <a href="#">
-            	 <li class="list-group-item d-flex justify-content-between align-items-center">
-                	Mis Tareas
-              		<span class="badge badge-warning badge-pill text-light">14</span>
-                </li>
-            </a>
+      @if(Auth::user()->estatus == 1)
+      <a href="{{ route('nuevatarea') }}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Demandar Servicio
+                </li> 
+      </a>  
+      @endif   
+
+      <a href="{{ route('home') }}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Ofrecer Servicio
+                </li> 
+      </a> 
+
+      <a href="{{ route('clientes') }}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Encuentra Clientes
+                </li> 
+      </a>
+
+      <a href="{{ route('profesionales') }}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Encuentra Profesionales
+                </li> 
+      </a>
+
+	
+
+            
+      
 
 </ul>

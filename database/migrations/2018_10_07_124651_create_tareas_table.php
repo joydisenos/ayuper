@@ -17,6 +17,7 @@ class CreateTareasTable extends Migration
             $table->increments('id');
             $table->integer('servicio_id');
             $table->integer('user_id');
+            $table->integer('presupuesto_id')->nullable();
             $table->string('nombre');
             $table->text('descripcion');
             $table->date('inicio');

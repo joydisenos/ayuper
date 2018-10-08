@@ -34,3 +34,24 @@ a{
 		transform: translateY(-3px);
 	}
 }
+
+.container-img{
+	max-height: 500px;
+	overflow: hidden;
+}
+
+.img-lista{
+	max-height: 100px;
+	max-width: 300px;
+}
+
+.banner{
+	height: 200px;
+	background-image: url('https://ayuper.es/wp-content/uploads/2018/05/BeFunky-collage.jpg');
+	background-size: cover;
+	background-position: center top;
+}
+
+.bg-transparent-gray{
+	background-color: rgba(0,0,0,0.45);
+}

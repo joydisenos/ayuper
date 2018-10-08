@@ -32,7 +32,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: Poiret One;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -71,7 +71,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Poiret One";
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6319,7 +6319,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Poiret One";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6444,7 +6444,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Poiret One";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -10484,8 +10484,8 @@ a:hover {
 .card {
   -webkit-box-shadow: 5px 5px 10px #ececec;
           box-shadow: 5px 5px 10px #ececec;
-  -webkit-transition: all ease .5s;
-  transition: all ease .5s;
+  -webkit-transition: all ease .3s;
+  transition: all ease .3s;
 }
 
 .card:hover {
@@ -10496,5 +10496,26 @@ a:hover {
 .item:hover {
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
+}
+
+.container-img {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.img-lista {
+  max-height: 100px;
+  max-width: 300px;
+}
+
+.banner {
+  height: 200px;
+  background-image: url("https://ayuper.es/wp-content/uploads/2018/05/BeFunky-collage.jpg");
+  background-size: cover;
+  background-position: center top;
+}
+
+.bg-transparent-gray {
+  background-color: rgba(0, 0, 0, 0.45);
 }
 

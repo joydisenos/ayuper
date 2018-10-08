@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-secondary text-light">Encuentra tu trabajo con nosotros!</div>
+                <div class="card-header bg-secondary text-light">Date de alta y localiza tu Ayuper màs cercano!</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
-                        <input type="hidden" value="1" name="estatus">
+                        <input type="hidden" value="2" name="estatus">
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 

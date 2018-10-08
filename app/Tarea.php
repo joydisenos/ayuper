@@ -15,4 +15,14 @@ class Tarea extends Model
     {
     	return $this->belongsTo(Servicio::class);
     }
+
+    public function presupuestos()
+    {
+    	return $this->hasMany(Presupuesto::class);
+    }
+
+    public function presupuesto()
+    {
+        return $this->belongsTo(Presupuesto::class);
+    }
 }

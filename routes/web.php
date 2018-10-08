@@ -14,14 +14,32 @@
 Auth::routes();
 
 Route::get('/', 'SiteController@index')->name('index');
-
 Route::get('/home', 'SiteController@index')->name('home');
-Route::get('/perfil', 'SiteController@index')->name('perfil');
 Route::get('/password', 'SiteController@index')->name('password');
 Route::get('/notificaciones', 'SiteController@index')->name('notificaciones');
 
+//alta
+Route::get('/alta', 'AltaController@alta')->name('alta');
+
 //Tareas
-Route::get('/tareas', 'SiteController@index')->name('tareas');
+Route::get('/tarea/{id}', 'TareaController@show')->name('tarea');
+Route::get('/modificar/tarea/{id}', 'TareaController@edit')->name('modificartarea');
+Route::get('/eliminar/tarea/{id}', 'TareaController@destroy')->name('eliminartarea');
+Route::post('/actualiza/tarea/{id}', 'TareaController@update')->name('actualizartarea');
+Route::get('/mistareas', 'TareaController@index')->name('mistareas');
 Route::get('/nueva/tarea', 'TareaController@create')->name('nuevatarea');
 Route::post('/crear/tarea', 'TareaController@store')->name('posttarea');
+
+//Perfil
+Route::get('/perfil', 'PerfilController@index')->name('perfil');
+Route::post('completar/perfil', 'PerfilController@store')->name('completarperfil');
+Route::post('/actualizar/perfil/{id}', 'PerfilController@update')->name('actualizarperfil');
+
+//Listado
+Route::get('/buscar/clientes', 'ListadoController@clientes')->name('clientes');
+Route::get('/buscar/profesionales', 'ListadoController@profesionales')->name('profesionales');
+
+//Presupuesto
+Route::post('/enviar/presupuesto', 'PresupuestoController@store')->name('enviarpresupuesto');
+Route::get('/aceptar/{presupuesto}/{tarea}', 'PresupuestoController@aceptar')->name('aceptarpresupuesto');
 
