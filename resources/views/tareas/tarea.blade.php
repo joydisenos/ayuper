@@ -154,11 +154,21 @@
                                 @if($tarea->user_id == Auth::user()->id)
                                 <div class="col-sm-8">
                                     <p>{{ $tarea->presupuesto->detalles }}</p>
+                                     <p>
+                                        Teléfono móvil {{ $tarea->presupuesto->user->perfil->telefonomovil }}
+                                    </p>
+                                     <p>
+                                        Teléfono fijo {{ $tarea->presupuesto->user->perfil->telefonofijo }}
+                                    </p>
+                                    <p>
+                                        Email {{ $tarea->presupuesto->user->email }}
+                                    </p>
                                     <p>
                                         <strong>
                                             Precio: {{ $tarea->presupuesto->precio }}
                                         </strong>
                                     </p>
+                                   
                                    
                                 </div>
                                 @endif

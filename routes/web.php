@@ -21,6 +21,9 @@ Route::get('/notificaciones', 'SiteController@index')->name('notificaciones');
 //alta
 Route::get('/alta', 'AltaController@alta')->name('alta');
 
+//Bienvenida
+Route::get('/bienvenido', 'BienvenidaController@bienvenida')->name('bienvenida');
+
 //Tareas
 Route::get('/tarea/{id}', 'TareaController@show')->name('tarea');
 Route::get('/modificar/tarea/{id}', 'TareaController@edit')->name('modificartarea');
@@ -43,3 +46,10 @@ Route::get('/buscar/profesionales', 'ListadoController@profesionales')->name('pr
 Route::post('/enviar/presupuesto', 'PresupuestoController@store')->name('enviarpresupuesto');
 Route::get('/aceptar/{presupuesto}/{tarea}', 'PresupuestoController@aceptar')->name('aceptarpresupuesto');
 
+//Admin
+Route::get('/todos/usuarios', 'AdminController@usuarios')->name('usuariosregistrados');
+Route::get('/todas/tareas', 'AdminController@tareas')->name('todastareas');
+Route::get('/todas/servicios', 'AdminController@servicios')->name('servicios');
+	//Servicios
+	Route::post('/nuevo/servicio', 'ServicioController@store')->name('nuevoservicio');
+	Route::get('/eliminar/servicio/{id}', 'ServicioController@destroy')->name('eliminarservicio');

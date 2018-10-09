@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://ayuper.es/wp-content/uploads/2018/03/cropped-logotipo_opt-32x32.png" sizes="32x32" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -94,6 +95,57 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="bg-dark text-light p-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h6>NUESTROS PRODUCTOS Y SERVICIOS</h6>
+                        <a href="https://ayuper.es/limpieza-de-tu-casa-en-madrid/" class="d-block mb-3">
+                            Limpieza de tu hogar en Madrid
+                        </a>
+                        <a href="https://ayuper.es/cuidado-de-tu-mascota-en-madrid/" class="d-block mb-3">
+                            Cuidado de tu mascota en Madrid
+                        </a>
+                        <a href="https://ayuper.es/chef-a-domicilio-en-madrid/" class="d-block mb-3">
+                            Chef a domicilio en Madrid
+                        </a>
+                        <a href="https://ayuper.es/lavanderia-planchado-ropa-madrid/" class="d-block mb-3">
+                            Lavandería y plancha en Madrid
+                        </a>
+                    </div>
+                    <div class="col">
+                        <h6>CONTACTE CON NOSOTROS</h6>
+                        <p class="d-block">911 39 72 01</p>
+                        <p class="d-block">hola@ayuper.es</p>
+                        <p class="d-block">Términos y condiciones</p>
+                        <p class="d-block">Política de privacidad</p>
+                        <p class="d-block">PDiseñado con mucho ❤ para ayuper!</p>
+                    </div>
+                    <div class="col">
+                        <h6>AYUPER – TU AYUDANTE PERSONAL</h6>
+                        <p>Tu ayudante personal, nos dedicamos a buscar profesionales de confianza para ayudarte en las tareas de tu hogar como en la limpieza de tu casa o apartamento, chef a domicilio, cuidado de tu mascota y planchado de tu ropa, todo con tu móvil.</p>
+                    </div>
+                    <div class="col">
+                        <h6>SIGUE A NUESTROS AYUPER EN NUESTRAS REDES SOCIALES</h6>
+                        <a href="https://ayuper.es/">Facebook</a>
+                        <a href="https://ayuper.es/">LinkedIn</a>
+                    </div>
+                </div>
+
+               
+            </div>
+
+        </footer>
+
+        <footer class="text-light pt-3" style="background: #282a2b">
+            <div class="container">
+                 <div class="row">
+                    <div class="col text-center">
+                        <p> © Copyright 2012 - 2018 Ayuper.es Todos los derechos reservados</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

@@ -31,6 +31,24 @@
                 </li> 
       </a>
 
+      @role('admin')
+      <a href="{{ route('usuariosregistrados') }}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Usuarios Registrados
+                </li> 
+      </a>
+      <a href="{{ route('todastareas') }}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Tareas
+                </li> 
+      </a>
+      <a href="{{ route('servicios') }}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Servicios
+                </li> 
+      </a>
+      @endrole
+
 	
 
             

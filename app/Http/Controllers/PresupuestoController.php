@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Presupuesto;
 use App\Tarea;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Presupuesto as PresupuestoMail;
+use App\Mail\Adjudicado as AdjudicadoMail;
+use App\Mail\Presupuestoaprobado as AprobadoMail;
 
 class PresupuestoController extends Controller
 {
@@ -35,6 +39,15 @@ class PresupuestoController extends Controller
         $tarea->finalizado = 1;
         $tarea->save();
 
+        $presupuestoAceptado = Presupuesto::findOrFail($presupuesto);
+        $mail = $presupuestoAceptado->user->email;
+
+        Mail::to($mail , 'Ayuper.es')
+                   ->send(new AdjudicadoMail());
+
+        Mail::to('info@ayuper.es' , 'Ayuper.es')
+                   ->send(new AprobadoMail());
+
         return redirect()->back()->with('status','Felicidades aceptaste con éxito la propuesta!');
     }
 
@@ -57,6 +70,12 @@ class PresupuestoController extends Controller
         $presupuesto->detalles = $request->detalles;
         $presupuesto->precio = $request->precio;
         $presupuesto->save();
+
+        $tarea = Tarea::findOrFail($request->tarea_id);
+        $mail = $tarea->user->email;
+
+        Mail::to($mail , 'Ayuper.es')
+                   ->send(new PresupuestoMail());
 
         return redirect()->back()->with('status','Presupuesto enviado con éxito');
     }
