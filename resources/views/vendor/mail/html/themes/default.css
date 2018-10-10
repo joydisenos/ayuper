@@ -226,6 +226,14 @@ img {
     border-left: 18px solid #3097D1;
 }
 
+.button-orange {
+    background-color: #ff9800;
+    border-top: 10px solid #ff9800;
+    border-right: 18px solid #ff9800;
+    border-bottom: 10px solid #ff9800;
+    border-left: 18px solid #ff9800;
+}
+
 .button-green {
     background-color: #2ab27b;
     border-top: 10px solid #2ab27b;

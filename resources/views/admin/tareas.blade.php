@@ -37,20 +37,26 @@
 						    	</div>
 						    </div>
 
-
-						    
-
-						
-
-
 						  </div>
+
+						  <div class="card-footer text-right">
+                           
+                            <a href="{{ route('eliminartarea' , $tarea->id) }}" class="btn btn-outline-danger btn-sm">
+                                Eliminar
+                            </a>
+                            <a href="{{ route('modificartarea' , $tarea->id) }}" class="btn btn-outline-secondary btn-sm">
+                                Modificar
+                            </a>
+                      
+                            <a href="{{ route('tarea' , $tarea->id) }}" class="btn btn-warning text-light btn-sm">Ver más</a>
+                        </div>
 					</div>
                 </div>
                  
             </div>
             @endforeach
     
-            
+            {{$tareas->links()}}
         </div>
     </div>
 </div>

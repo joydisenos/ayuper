@@ -9,6 +9,7 @@ use App\Mail\Tareacercana as MailTarea;
 use App\Servicio;
 use App\Tarea;
 use App\User;
+use App\Notificacion;
 
 class TareaController extends Controller
 {
@@ -26,9 +27,10 @@ class TareaController extends Controller
     public function index()
     {
         $userId = Auth::user()->id;
-        $tareas = Tarea::where('user_id',$userId)->paginate(20);
+        $tareas = Tarea::where('user_id',$userId)->paginate(10);
+        $notificaciones = Notificacion::where('user_id',$userId)->paginate(10);
 
-        return view('tareas.mistareas',compact('tareas'));
+        return view('tareas.mistareas',compact('tareas','notificaciones'));
     }
 
     /**
@@ -132,11 +134,8 @@ class TareaController extends Controller
         'codigo' => 'required|numeric',
         ]);
 
-        $userId = Auth::user()->id;
-
         $tarea = Tarea::findOrFail($id);
         $tarea->servicio_id = $request->lista;
-        $tarea->user_id = $userId;
         $tarea->nombre = $request->nombre;
         $tarea->descripcion = $request->descripcion;
         $tarea->inicio = $request->fechainicio;

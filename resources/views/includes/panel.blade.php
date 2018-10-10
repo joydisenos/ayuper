@@ -5,7 +5,7 @@
                 </li>	
 			</a>
 
-      @if(Auth::user()->estatus == 1)
+      @if(Auth::user()->estatus == 2)
       <a href="{{ route('nuevatarea') }}">
         <li class="list-group-item d-flex justify-content-between align-items-center">
                   Demandar Servicio

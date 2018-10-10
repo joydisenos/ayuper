@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function tareas()
     {
-    	$tareas = Tarea::all();
+    	$tareas = Tarea::paginate(10);
 
     	return view('admin.tareas',compact('tareas'));
     }
@@ -39,7 +39,7 @@ class AdminController extends Controller
     {
         $validatedData = $request->validate([
         'nombre' => 'required|min:3',
-        'email' => 'required|email',
+        'email' => 'required|email|unique:users',
         ]);
 
         $userId = $request->user_id;

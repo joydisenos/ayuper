@@ -12,7 +12,7 @@
 
                 @include('includes.notificacion')
                 
-                @if($tareas->count() == 0)
+                @if($tareas->count() == 0 && Auth::user()->estatus == 2)
                 <div class="alert alert-warning bg-warning text-light text-center" role="alert">
                     <h5>
                         Aún no tienes tareas, crea una para conseguir a los mejores profesionales!
@@ -30,8 +30,25 @@
                 @endforeach
 
                 {{ $tareas->links() }}
+
+                @if(Auth::user()->estatus == 1)
+                @foreach($notificaciones as $notificacion)
+
+                    @include('includes.itemprofesional')
+
+                @endforeach
+
+                {{ $notificaciones->links() }}
+                @endif
             
         </div>
     </div>
 </div>
+@if(Auth::user()->estatus == 2)
+<div class="float">
+    <a href="{{ route('nuevatarea') }}" class="btn btn-outline-warning">
+                        Crear tarea
+    </a>
+</div>
+@endif
 @endsection

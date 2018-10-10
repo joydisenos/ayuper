@@ -63,7 +63,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Notificaciones</a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if(Auth::user()->estatus == 1)
+                                    
 
                                     @foreach(Auth::user()->notificaciones->where('estatus',1) as $not)
                                     <a href="{{ route('notificacion' , $not->id) }}" class="dropdown-item">
@@ -71,9 +71,9 @@
                                     </a>
                                     @endforeach
 
-                                    @else
+                                   
 
-                                    @endif
+                                   
 
                                 </div>
                             </li>
@@ -92,9 +92,15 @@
                                     <!--<a href="{{ route('notificaciones') }}" class="dropdown-item">
                                         Notificaciones
                                     </a>-->
+                                    @if(Auth::user()->estatus == 2)
                                     <a href="{{ route('mistareas') }}" class="dropdown-item d-flex justify-content-between align-items-center">
                                         Mis tareas {{ Auth::user()->tareas->count() }}
                                     </a>
+                                    @else
+                                    <a href="{{ route('mistareas') }}" class="dropdown-item d-flex justify-content-between align-items-center">
+                                        Mis tareas {{ Auth::user()->notificaciones->count() }}
+                                    </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -136,11 +142,11 @@
                     </div>
                     <div class="col-md-3">
                         <h6>CONTACTE CON NOSOTROS</h6>
-                        <p class="d-block">911 39 72 01</p>
-                        <p class="d-block">hola@ayuper.es</p>
+                        <p class="d-block"> <img src="https://s.w.org/images/core/emoji/11/svg/260e.svg" width="15px"> 911 39 72 01</p>
+                        <p class="d-block"><img src="https://s.w.org/images/core/emoji/11/svg/2709.svg" width="15px"> hola@ayuper.es</p>
                         <p class="d-block">Términos y condiciones</p>
                         <p class="d-block">Política de privacidad</p>
-                        <p class="d-block">Diseñado con mucho ❤ para ayuper!</p>
+                        <p class="d-block">Diseñado con mucho <img src="https://s.w.org/images/core/emoji/11/svg/2764.svg" width="15px"> para ayuper!</p>
                     </div>
                     <div class="col-md-3">
                         <h6>AYUPER – TU AYUDANTE PERSONAL</h6>
@@ -148,8 +154,12 @@
                     </div>
                     <div class="col-md-3">
                         <h6>SIGUE A NUESTROS AYUPER EN NUESTRAS REDES SOCIALES</h6>
-                        <a href="https://ayuper.es/">Facebook</a>
-                        <a href="https://ayuper.es/">LinkedIn</a>
+                        <a href="https://ayuper.es/" >
+                            <img src="{{ asset('img/facebook.svg') }}" width="30px">
+                        </a>
+                        <a href="https://ayuper.es/">
+                        <img src="{{ asset('img/linkedin.svg') }}" width="30px">
+                    </a>
                     </div>
                 </div>
 
