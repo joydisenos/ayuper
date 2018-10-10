@@ -57,7 +57,7 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-link text-warning" href="{{ route('password.request') }}">
+                                <a class="btn btn-warning text-light" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>

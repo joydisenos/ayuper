@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Tareacercana as MailTarea;
 use App\Servicio;
 use App\Tarea;
+use App\User;
 
 class TareaController extends Controller
 {
@@ -23,7 +26,7 @@ class TareaController extends Controller
     public function index()
     {
         $userId = Auth::user()->id;
-        $tareas = Tarea::where('user_id',$userId)->get();
+        $tareas = Tarea::where('user_id',$userId)->paginate(20);
 
         return view('tareas.mistareas',compact('tareas'));
     }
@@ -73,7 +76,13 @@ class TareaController extends Controller
         $tarea->codigo = $request->codigo;
         $tarea->save();
 
-        return redirect()->back()->with('status','Tarea registrada correctamente, en breves momentos será publicada');
+        $users = User::where( 'codigo' , $request->codigo )->get();
+
+        foreach ($users as $user) {
+            Mail::to($user->email)->send(new MailTarea());
+        }
+
+        return redirect('home')->with('status','Tarea registrada correctamente, en breves momentos será publicada');
     }
 
     /**

@@ -10505,7 +10505,7 @@ a:hover {
 
 .img-lista {
   max-height: 100px;
-  max-width: 300px;
+  max-width: 100%;
 }
 
 .banner {
@@ -10517,5 +10517,25 @@ a:hover {
 
 .bg-transparent-gray {
   background-color: rgba(0, 0, 0, 0.45);
+}
+
+#navbarSupportedContent .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 110%;
+  -webkit-transition: all ease .5s;
+  transition: all ease .5s;
+}
+
+#navbarSupportedContent .nav-link:hover {
+  color: white;
+}
+
+footer a {
+  -webkit-transition: all ease .5s;
+  transition: all ease .5s;
+}
+
+footer a:hover {
+  color: #ff9800;
 }
 

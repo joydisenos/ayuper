@@ -13,30 +13,20 @@
       </a>  
       @endif   
 
-      <a href="{{ route('home') }}">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Ofrecer Servicio
-                </li> 
-      </a> 
-
-      <a href="{{ route('clientes') }}">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Encuentra Clientes
-                </li> 
-      </a>
-
-      <a href="{{ route('profesionales') }}">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Encuentra Profesionales
-                </li> 
-      </a>
-
       @role('admin')
+      <a href="{{ route('notificacionespendientes') }}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Notificaciones Pendientes
+                  <span class="badge badge-warning text->light">{{ App\Notificacion::where('estatus','<',3)->where('tipo',2)->count() }}</span>
+                </li> 
+      </a>
+
       <a href="{{ route('usuariosregistrados') }}">
         <li class="list-group-item d-flex justify-content-between align-items-center">
                   Usuarios Registrados
                 </li> 
       </a>
+
       <a href="{{ route('todastareas') }}">
         <li class="list-group-item d-flex justify-content-between align-items-center">
                   Tareas

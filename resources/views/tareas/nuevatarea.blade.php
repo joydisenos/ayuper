@@ -10,6 +10,11 @@
         <div class="col-md-8">
             <div class="row mb-4">
                 <div class="col-md-12">
+                    @if(Auth::user()->perfil == null)
+                    <div class="alert alert-warning" role="alert">
+                            Para publicar tareas debes completar tu perfil! <a href="{{ route('perfil') }}" class="btn btn-outline-secondary">Perfil</a>
+                    </div>
+                    @else
                     <div class="card">
                         <div class="card-header bg-secondary text-light">Nueva Tarea</div>
 
@@ -83,6 +88,7 @@
                             </form>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

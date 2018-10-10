@@ -25,11 +25,10 @@ class SiteController extends Controller
      */
     public function index()
     {
-
         $tareas = Tarea::where('estatus',0)
                 ->where('codigo', Auth::user()->codigo)
                 ->orderBy('created_at','desc')
-                ->get();
+                ->paginate(20);
 
         return view('home',compact('tareas'));
     }

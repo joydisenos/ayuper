@@ -50,6 +50,13 @@ Route::get('/aceptar/{presupuesto}/{tarea}', 'PresupuestoController@aceptar')->n
 Route::get('/todos/usuarios', 'AdminController@usuarios')->name('usuariosregistrados');
 Route::get('/todas/tareas', 'AdminController@tareas')->name('todastareas');
 Route::get('/todas/servicios', 'AdminController@servicios')->name('servicios');
+Route::post('/actualizar/usuario', 'AdminController@actualizarusuario')->name('actualizarusuario');
+
 	//Servicios
 	Route::post('/nuevo/servicio', 'ServicioController@store')->name('nuevoservicio');
 	Route::get('/eliminar/servicio/{id}', 'ServicioController@destroy')->name('eliminarservicio');
+
+//Notificaciones
+Route::get('/notificacion/{id}', 'NotificacionController@notificacion')->name('notificacion');
+Route::get('/notificaciones/pendientes', 'NotificacionController@notificaciones')->name('notificacionespendientes');
+Route::get('/not/{id}/{estatus}', 'NotificacionController@estatus')->name('notificacionestatus');

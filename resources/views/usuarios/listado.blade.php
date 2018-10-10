@@ -28,9 +28,9 @@
 						  	<img class="card-img-top" src="{{ 
 						  	 asset('storage/perfiles')
 						  	 . '/' .
-						  	 Auth::user()->id
+						  	 $usuario->id
 						  	 . '/' . 
-						  	 Auth::user()->perfil->foto 
+						  	 $usuario->perfil->foto 
 						  	}}" alt="Card image cap">
 						  	@endif
 

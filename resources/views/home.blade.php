@@ -12,7 +12,7 @@
         @include('includes.notificacion')
                 @if(Auth::user()->perfil == null)
                     <div class="alert alert-warning" role="alert">
-                            Para encontrar trabajos cercanos deber completar tu perfil! <a href="{{ route('perfil') }}" class="btn btn-outline-secondary">Perfil</a>
+                            Para encontrar trabajos cercanos debes completar tu perfil! <a href="{{ route('perfil') }}" class="btn btn-outline-secondary">Perfil</a>
                     </div>
                 @else
                     @if($tareas->count() == 0)
@@ -24,7 +24,7 @@
                        @include('includes.item') 
                     @endforeach
                 @endif
-        
+        {{ $tareas->links() }}
             
         </div>
     </div>

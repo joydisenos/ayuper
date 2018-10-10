@@ -25,4 +25,9 @@ class Tarea extends Model
     {
         return $this->belongsTo(Presupuesto::class);
     }
+
+    public function notificaciones()
+    {
+        return $this->hasMany(Notificacion::class);
+    }
 }

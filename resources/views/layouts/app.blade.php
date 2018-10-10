@@ -58,6 +58,27 @@
                                 <a class="nav-link" href="{{ route('alta') }}">localiza tu ayuper!</a>
                             </li>
                         @else
+                            
+                            @if(Auth::user()->notificaciones->where('estatus',1)->count() > 0)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Notificaciones</a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->estatus == 1)
+
+                                    @foreach(Auth::user()->notificaciones->where('estatus',1) as $not)
+                                    <a href="{{ route('notificacion' , $not->id) }}" class="dropdown-item">
+                                        {{ $not->detalles }}
+                                    </a>
+                                    @endforeach
+
+                                    @else
+
+                                    @endif
+
+                                </div>
+                            </li>
+                            @endif
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ title_case(Auth::user()->name) }} <span class="caret"></span>
@@ -98,7 +119,7 @@
         <footer class="bg-dark text-light p-4">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-3">
                         <h6>NUESTROS PRODUCTOS Y SERVICIOS</h6>
                         <a href="https://ayuper.es/limpieza-de-tu-casa-en-madrid/" class="d-block mb-3">
                             Limpieza de tu hogar en Madrid
@@ -113,19 +134,19 @@
                             Lavandería y plancha en Madrid
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-md-3">
                         <h6>CONTACTE CON NOSOTROS</h6>
                         <p class="d-block">911 39 72 01</p>
                         <p class="d-block">hola@ayuper.es</p>
                         <p class="d-block">Términos y condiciones</p>
                         <p class="d-block">Política de privacidad</p>
-                        <p class="d-block">PDiseñado con mucho ❤ para ayuper!</p>
+                        <p class="d-block">Diseñado con mucho ❤ para ayuper!</p>
                     </div>
-                    <div class="col">
+                    <div class="col-md-3">
                         <h6>AYUPER – TU AYUDANTE PERSONAL</h6>
                         <p>Tu ayudante personal, nos dedicamos a buscar profesionales de confianza para ayudarte en las tareas de tu hogar como en la limpieza de tu casa o apartamento, chef a domicilio, cuidado de tu mascota y planchado de tu ropa, todo con tu móvil.</p>
                     </div>
-                    <div class="col">
+                    <div class="col-md-3">
                         <h6>SIGUE A NUESTROS AYUPER EN NUESTRAS REDES SOCIALES</h6>
                         <a href="https://ayuper.es/">Facebook</a>
                         <a href="https://ayuper.es/">LinkedIn</a>
@@ -147,5 +168,6 @@
             </div>
         </footer>
     </div>
+    @yield('scripts')
 </body>
 </html>

@@ -10,19 +10,31 @@
         
             <div class="col-md-8">
                  @include('includes.notificacion')
+                 @include('includes.errors')
 
+<div class="row mb-4">
+  <div class="col">
+   
+      <input type="text" class="form-control" placeholder="Buscar por nombre" id="nombre" value="">
 
+  </div>
+  <div class="col">
+   
+      <input type="text" class="form-control" placeholder="Buscar por email" id="email" value="">
+
+  </div>
+</div>
         @foreach($users as $user)
-            <div class="row mb-4">
+            <div class="row mb-4 ocultar">
                 <div class="col-md-12">
               <div class="card item">
-               <div class="card-header bg-secondary text-light d-flex justify-content-between align-items-center">
+               <div class="card-header bg-secondary text-light d-flex justify-content-between align-items-center nombres">
                             {{ title_case($user->name) }}
                 </div>
 						  <div class="card-body">
 
 						    <div class="row mb-3">
-						    	<div class="col">
+						    	<div class="col emails">
 						    		<strong>Email:</strong> {{ $user->email }}
 						    	</div>
 						    </div>
@@ -63,8 +75,11 @@
 						    			Miembro desde {{ $user->created_at->format('d-M-Y') }}
 						    		</p>
 						    	</div>
+                  <div class="col">
+                    <button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#modificarusuario" data-nombre="{{$user->name}}" data-email="{{ $user->email }}" data-id="{{$user->id}}">Modificar</button>
+                  </div>
 						    </div>
-
+    
 
 						  </div>
 					</div>
@@ -77,5 +92,108 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modificarusuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('actualizarusuario') }}" method="post">
+        <div class="modal-body">
+        
+            @csrf
+            <input type="hidden" value="0" id="idmodal" name="user_id">
+          <div class="form-group">
+            <label for="nombremodal" class="col-form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombremodal" name="nombre">
+          </div>
+
+          <div class="form-group">
+            <label for="emailmodal" class="col-form-label">Email</label>
+            <input type="text" class="form-control" id="emailmodal" name="email">
+          </div>
+
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-warning text-light">Actualizar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endrole
+@endsection
+@section('scripts')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+
+
+<script>
+$(document).ready(function () {
+   $('#nombre').keyup(function () {
+
+    var filter = this.value.toLowerCase();  // no need to call jQuery here
+      $('.ocultar').show();
+      $('#email').val('');
+    $('.ocultar').each(function() {
+        /* cache a reference to the current .media (you're using it twice) */
+        var _this = $(this);
+        var title = _this.find('.nombres').text().toLowerCase();
+
+        /* 
+            title and filter are normalized in lowerCase letters
+            for a case insensitive search
+         */
+        if (title.indexOf(filter) < 0) {
+            _this.hide();
+        }else if(filter == ''){
+          $('.ocultar').show();
+        }
+    });
+});
+
+   $('#email').keyup(function () {
+
+    var filter = this.value.toLowerCase();  // no need to call jQuery here
+      $('.ocultar').show();
+      $('#nombre').val('');
+    $('.ocultar').each(function() {
+        /* cache a reference to the current .media (you're using it twice) */
+        var _this = $(this);
+        var title = _this.find('.emails').text().toLowerCase();
+
+        /* 
+            title and filter are normalized in lowerCase letters
+            for a case insensitive search
+         */
+        if (title.indexOf(filter) < 0) {
+            _this.hide();
+        }else if(filter == ''){
+          $('.ocultar').show();
+        }
+    });
+});
+
+  $('#modificarusuario').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var nombreUser = button.data('nombre'); // Extract info from data-* attributes
+  var emailUser = button.data('email'); // Extract info from data-* attributes
+  var idUser = button.data('id'); // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this);
+  modal.find('.modal-title').text('Modificar datos de ' + nombreUser);
+  modal.find('#nombremodal').val(nombreUser);
+  modal.find('#emailmodal').val(emailUser);
+  modal.find('#idmodal').val(idUser);
+});
+
+});
+</script>
+
 @endsection

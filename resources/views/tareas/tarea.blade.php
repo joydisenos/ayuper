@@ -29,7 +29,22 @@
 
                             <div class="row mb-4">
                                 <div class="col-sm-4 text-center">
+                                    @if($tarea->user->perfil == null)
                                     <img class="img-lista" src="https://supermujeres.files.wordpress.com/2012/09/limpieza.jpg" alt="">
+                                    @else
+                                        @if($tarea->user->perfil->foto == null)
+                                        <img class="img-lista" src="https://supermujeres.files.wordpress.com/2012/09/limpieza.jpg" alt="">
+                                        @else
+                                        <img class="img-lista" src="{{
+                                        asset('storage/perfiles')
+                                         . '/' .
+                                         $tarea->user->id
+                                         . '/' . 
+                                         $tarea->user->perfil->foto 
+                                    }}" alt="">
+                                        @endif
+                                    @endif
+
                                 </div>
                                 <div class="col-sm-8">
                                     {{ $tarea->descripcion }}
@@ -64,12 +79,14 @@
                                             Modificar
                                         </a>
                                     @else
-                                        @if(Auth::user()->estatus == 1)
+                                    
+                                    @if(Auth::user()->estatus == 1 && Auth::user()->id != $tarea->user_id && $tarea->presupuesto_id == null)
                                             <button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#presupuestoenviar">
                                                 Enviar Presupuesto
                                             </button>
                                         @endif
                                     @endif
+
                             	</div>
                             </div>
 
@@ -117,6 +134,10 @@
                                     </a>
                                    
                                 </div>
+                                @else
+                                <div class="col-sm-8">
+                                    <p>A la Espera por la aprobación del Cliente</p>                                   
+                                </div>
                                 @endif
                             </div>
 
@@ -154,6 +175,13 @@
                                 @if($tarea->user_id == Auth::user()->id)
                                 <div class="col-sm-8">
                                     <p>{{ $tarea->presupuesto->detalles }}</p>
+                                     
+
+                                     @if($tarea->estatus == 0)
+                                     <p>
+                                         Debe contactar con el administrador para realizar el pago y serán liberados los datos del Profesional
+                                     </p>
+                                     @elseif($tarea->estatus == 1)
                                      <p>
                                         Teléfono móvil {{ $tarea->presupuesto->user->perfil->telefonomovil }}
                                     </p>
@@ -163,6 +191,13 @@
                                     <p>
                                         Email {{ $tarea->presupuesto->user->email }}
                                     </p>
+                                    @elseif($tarea->estatus == 2)
+                                    <p>
+                                        El proyecto fué cancelado por favor contacte con el administrador para más detalles.
+                                    </p>
+                                    @endif
+
+
                                     <p>
                                         <strong>
                                             Precio: {{ $tarea->presupuesto->precio }}
@@ -171,6 +206,20 @@
                                    
                                    
                                 </div>
+                                @else
+                                 @if($tarea->estatus == 0)
+                                     <p>
+                                         Proyecto a la Espera de la Confirmación del pago
+                                     </p>
+                                     @elseif($tarea->estatus == 1)
+                                     <p>
+                                         Pago confirmado!
+                                     </p>
+                                    @elseif($tarea->estatus == 2)
+                                    <p>
+                                        El proyecto fué cancelado por favor contacte con el administrador para más detalles.
+                                    </p>
+                                    @endif
                                 @endif
                             </div>
 
@@ -215,10 +264,13 @@
 
         <div class="form-group">
             <label for="precio">Precio</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <div class="input-group-text bg-warning text-light">€</div>
+            </div>
             <input type="number" min="0" step="0.1" class="form-control" id="precio" name="precio" placeholder="Indique el precio">
+            </div>
         </div>
-
-       
 
         </div>
         <div class="modal-footer">

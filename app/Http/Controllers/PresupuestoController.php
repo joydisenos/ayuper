@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Presupuesto;
 use App\Tarea;
+use App\Notificacion;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Presupuesto as PresupuestoMail;
 use App\Mail\Adjudicado as AdjudicadoMail;
@@ -17,6 +18,12 @@ class PresupuestoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index()
     {
         //
@@ -41,6 +48,13 @@ class PresupuestoController extends Controller
 
         $presupuestoAceptado = Presupuesto::findOrFail($presupuesto);
         $mail = $presupuestoAceptado->user->email;
+
+        $not = new Notificacion();
+        $not->user_id = $presupuestoAceptado->user->id;
+        $not->tarea_id = $tarea->id;
+        $not->detalles = 'El Cliente ha aprobado tu presupuesto';
+        $not->tipo = 2;
+        $not->save();
 
         Mail::to($mail , 'Ayuper.es')
                    ->send(new AdjudicadoMail());
@@ -73,6 +87,13 @@ class PresupuestoController extends Controller
 
         $tarea = Tarea::findOrFail($request->tarea_id);
         $mail = $tarea->user->email;
+
+        $not = new Notificacion();
+        $not->user_id = $tarea->user->id;
+        $not->tarea_id = $request->tarea_id;
+        $not->detalles = 'Ha recibido un presupuesto nuevo';
+        $not->tipo = 1;
+        $not->save();
 
         Mail::to($mail , 'Ayuper.es')
                    ->send(new PresupuestoMail());

@@ -28,6 +28,8 @@
                     @include('includes.item')
 
                 @endforeach
+
+                {{ $tareas->links() }}
             
         </div>
     </div>
