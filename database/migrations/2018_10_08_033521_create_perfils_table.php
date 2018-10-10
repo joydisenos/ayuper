@@ -18,6 +18,7 @@ class CreatePerfilsTable extends Migration
             $table->integer('user_id');
             $table->string('foto')->nullable();
             $table->string('dni')->nullable();
+            $table->string('tipo')->nullable();
             $table->string('telefonomovil')->nullable();
             $table->string('telefonofijo')->nullable();
             $table->timestamps();

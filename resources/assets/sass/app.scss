@@ -47,7 +47,7 @@ a{
 
 .banner{
 	height: 200px;
-	background-image: url('https://ayuper.es/wp-content/uploads/2018/05/BeFunky-collage.jpg');
+	background-image: url('http://app.ayuper.es/img/header.jpg');
 	background-size: cover;
 	background-position: center top;
 }
@@ -81,4 +81,18 @@ footer{
 	right: 30px;
 	bottom: 30px;
 	z-index: 999;
+}
+
+.page-item.active .page-link{
+	background-color: #ff9800 !important;
+	border-color: #ff9800 !important;
+}
+
+#navbarSupportedContent{
+	.nav-link{
+		border-top:solid thin transparent;
+		&:hover{
+			border-top:solid thin #fff;
+		}
+	}
 }

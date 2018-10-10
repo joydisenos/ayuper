@@ -9,6 +9,7 @@
         
             <div class="col-md-8">
                  @include('includes.notificacion')
+                 @include('includes.errors')
             <div class="row mb-4">
                 <div class="col-md-12">
               <div class="card item">
@@ -21,10 +22,10 @@
                 </h5>
 						  <div class="container-img">
 						  	@if($perfil == null)
-						  	<img class="card-img-top" src="https://supermujeres.files.wordpress.com/2012/09/limpieza.jpg" alt="Card image cap">
+						  	<img class="card-img-top" src="{{ asset('img/principal.jpg') }}" alt="Card image cap">
 						  	@else
 						  	@if(Auth::user()->perfil->foto == null)
-						  	<img class="card-img-top" src="https://supermujeres.files.wordpress.com/2012/09/limpieza.jpg" alt="Card image cap">
+						  	<img class="card-img-top" src="{{ asset('img/principal.jpg') }}" alt="Card image cap">
 						  	@else
 						  	<img class="card-img-top" src="{{ 
 						  	 asset('storage/perfiles')
@@ -86,6 +87,13 @@
 						    	<div class="col">
 						    		<button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#modificarperfil">Actualizar Perfil</button>
 						    	</div>
+                  @if(Auth::user()->perfil->tipo != null)
+                  <div class="col">
+                    <p>
+                      <strong>Tipo de perfil:</strong> {{ Auth::user()->perfil->tipo }}
+                    </p>
+                  </div>
+                  @endif
 						    </div>
 						    @endif
 
@@ -151,6 +159,18 @@
             <input type="number" class="form-control" id="telefonofijo" name="telefonofijo" placeholder="Coloque su número fijo">
         </div>
 
+        @if(Auth::user()->estatus == 1)
+        <h5>Tipo de perfil profesional</h5>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio1" name="tipo" value="Autónomo" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio1" >Autónomo</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio2" name="tipo" value="Empresa" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio2" >Empresa</label>
+          </div>
+        @endif
+
         <div class="form-group">
         	<h5>
            @if(Auth::user()->estatus == 1)
@@ -161,9 +181,9 @@
           </h5>
         	@foreach($servicios as $servicio)
         	<div class="custom-control custom-checkbox">
-			  <input type="checkbox" class="custom-control-input" name="servicios[]" id="servicio{{$servicio->id}}" value="{{ $servicio->id }}">
-			  <label class="custom-control-label" for="servicio{{$servicio->id}}">{{ $servicio->nombre }}</label>
-			</div>
+    			  <input type="checkbox" class="custom-control-input" name="servicios[]" id="servicio{{$servicio->id}}" value="{{ $servicio->id }}">
+    			  <label class="custom-control-label" for="servicio{{$servicio->id}}">{{ $servicio->nombre }}</label>
+			   </div>
         	@endforeach
         </div>
 
@@ -182,7 +202,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Completar Perfil</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Perfil</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -217,6 +237,26 @@
             <label for="telefonofijo">Teléfono Fijo</label>
             <input type="number" class="form-control" id="telefonofijo" name="telefonofijo" placeholder="Coloque su número fijo" value="{{ Auth::user()->perfil->telefonofijo }}">
         </div>
+
+        @if(Auth::user()->estatus == 1)
+         <h5>Tipo de perfil profesional</h5>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio1" name="tipo" value="Autónomo" class="custom-control-input"
+            @if(Auth::user()->perfil->tipo == 'Autónomo')
+            checked
+            @endif
+            >
+            <label class="custom-control-label" for="customRadio1" >Autónomo</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio2" name="tipo" value="Empresa" class="custom-control-input"
+            @if(Auth::user()->perfil->tipo == 'Empresa')
+            checked
+            @endif
+            >
+            <label class="custom-control-label" for="customRadio2" >Empresa</label>
+          </div>
+        @endif
 
         <div class="form-group">
         	<h5>Seleccione los servicios a ofrecer</h5>

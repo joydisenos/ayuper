@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @include('includes.errors')
             <div class="card">
                 <div class="card-header bg-secondary text-light">Encuentra tu trabajo con nosotros!</div>
 
@@ -59,6 +60,18 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                
+                            </div>
+                        <div class="col-md-6">
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" name="politicas" id="politicas" required>
+                              <label class="custom-control-label" for="politicas">He leído y acepto los Términos y Condiciones</label>
+                            </div>
+                        </div>
                         </div>
 
                         <div class="form-group row mb-0">

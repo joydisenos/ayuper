@@ -48,6 +48,7 @@ Route::get('/aceptar/{presupuesto}/{tarea}', 'PresupuestoController@aceptar')->n
 
 //Admin
 Route::get('/todos/usuarios', 'AdminController@usuarios')->name('usuariosregistrados');
+Route::get('/eliminar/usuario/{id}', 'AdminController@eliminarusuario')->name('eliminarusuario');
 Route::get('/todas/tareas', 'AdminController@tareas')->name('todastareas');
 Route::get('/todas/servicios', 'AdminController@servicios')->name('servicios');
 Route::post('/actualizar/usuario', 'AdminController@actualizarusuario')->name('actualizarusuario');

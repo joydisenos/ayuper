@@ -21,7 +21,13 @@
                                 @if( $tarea->finalizado == null )
                                     <span class="badge badge-warning text-light">Disponible</span>
                                 @else
+                                    @if(Auth::user()->id == $tarea->presupuesto->user->id)
+                                    <span class="badge badge-warning text-light">
+                                        Felicidades! {{$tarea->user->name}} te asignó este proyecto
+                                    </span>
+                                    @else
                                     <span class="badge badge-dark text-light">Cerrado</span>
+                                    @endif
                                 @endif
                         </div>
 
@@ -30,10 +36,10 @@
                             <div class="row mb-4">
                                 <div class="col-sm-4 text-center">
                                     @if($tarea->user->perfil == null)
-                                    <img class="img-lista" src="https://supermujeres.files.wordpress.com/2012/09/limpieza.jpg" alt="">
+                                    <img class="img-lista" src="{{ asset('img/principal.jpg') }}" alt="">
                                     @else
                                         @if($tarea->user->perfil->foto == null)
-                                        <img class="img-lista" src="https://supermujeres.files.wordpress.com/2012/09/limpieza.jpg" alt="">
+                                        <img class="img-lista" src="{{ asset('img/principal.jpg') }}" alt="">
                                         @else
                                         <img class="img-lista" src="{{
                                         asset('storage/perfiles')
@@ -69,6 +75,14 @@
 								</div>
                             </div>
 
+                            <div class="row-mb-4">
+                                <div class="col text-center">
+                                    <p>
+                                        Publicado: {{$tarea->created_at->format('d/m/y H:i')}}
+                                    </p>
+                                </div>
+                            </div>
+
                             <div class="row">
                             	<div class="col text-right">
                             		@if($tarea->user_id == Auth::user()->id && $tarea->presupuesto_id == null)
@@ -96,7 +110,7 @@
                  
             </div>
             @if($tarea->presupuesto_id == null)
-            @foreach($tarea->presupuestos as $presupuesto)
+            @foreach($presupuestos as $presupuesto)
            <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card item">
@@ -147,6 +161,7 @@
                  
 </div>
         @endforeach
+        {{ $presupuestos->links() }}
          @else
           <div class="row mb-4">
                 <div class="col-md-12">

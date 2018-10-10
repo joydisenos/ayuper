@@ -6,7 +6,7 @@
                                 @if( $notificacion->tarea->finalizado == null )
                                     <span class="badge badge-warning text-light">Disponible</span>
                                 @else
-                                    <span class="badge badge-dark text-light">Cerrado</span>
+                                    
                                 @endif
                         </div>
 
@@ -14,10 +14,15 @@
 
                             <div class="row">
                                 <div class="col-sm-4 text-center">
-                                    <img class="img-lista" src="https://ayuper.es/wp-content/uploads/2018/03/cropped-logotipo_opt-192x192.png" alt="">
+                                    <img class="img-lista" src="{{asset('img/icono.png') }}" alt="">
                                 </div>
                                 <div class="col-sm-8">
-                                    {{ str_limit($notificacion->tarea->descripcion,200) }}
+                                   <p>
+                                        {{ str_limit($notificacion->tarea->descripcion,200) }}
+                                   </p>
+                                   <p>
+                                       Publicado: {{ $notificacion->tarea->created_at->format('d/m/y H:i') }}
+                                   </p>
                                 </div>
                             </div>
 

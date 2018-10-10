@@ -50,26 +50,49 @@ class PerfilController extends Controller
     public function store(Request $request)
     {
 
-        $validatedData = $request->validate([
-        'foto' => 'required|image',
-        'dni' => 'required',
-        'telefonomovil' => 'required',
-        'telefonofijo' => 'required',
-        'servicios' => 'required',
-        'codigo' => 'required',
+        if(Auth::user()->estatus == 1)
+        {
+            $validatedData = $request->validate([
+            'foto' => 'required|image',
+            'tipo' => 'required',
+            'dni' => 'required',
+            'telefonomovil' => 'required',
+            'telefonofijo' => 'required',
+            'servicios' => 'required',
+            'codigo' => 'required',
+            ]);
+        }else{
+            $validatedData = $request->validate([
+            'dni' => 'required',
+            'telefonomovil' => 'required',
+            'telefonofijo' => 'required',
+            'servicios' => 'required',
+            'codigo' => 'required',
         ]);
+        }
 
 
         $userId = Auth::user()->id;
-        $ruta = '/perfiles/'.$userId;
-        $foto = $request->file('foto');
-        $nombre = $foto->getClientOriginalName();
-        $request->file('foto')->storeAs($ruta, $nombre, 'public');
+        
+        if($request->hasFile('foto'))
+        {
+            $ruta = '/perfiles/'.$userId;
+            $foto = $request->file('foto');
+            $nombre = $foto->getClientOriginalName();
+            $request->file('foto')->storeAs($ruta, $nombre, 'public');
+        }
 
         $perfil = new Perfil();
         $perfil->user_id = $userId;
-        $perfil->foto = $nombre;
+        if($request->hasFile('foto'))
+        {
+            $perfil->foto = $nombre;
+        }
         $perfil->dni = $request->dni;
+        if(Auth::user()->estatus == 1)
+        {
+            $perfil->tipo = $request->tipo;
+        }
         $perfil->telefonomovil = $request->telefonomovil;
         $perfil->telefonofijo = $request->telefonofijo;
         $perfil->save();
@@ -147,6 +170,10 @@ class PerfilController extends Controller
             $perfil->foto = $nombre;
         }
         $perfil->dni = $request->dni;
+        if(Auth::user()->estatus == 1)
+        {
+            $perfil->tipo = $request->tipo;
+        }
         $perfil->telefonomovil = $request->telefonomovil;
         $perfil->telefonofijo = $request->telefonofijo;
         $perfil->save();

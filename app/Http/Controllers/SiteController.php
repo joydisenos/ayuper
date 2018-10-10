@@ -27,8 +27,9 @@ class SiteController extends Controller
     {
         $tareas = Tarea::where('estatus',0)
                 ->where('codigo', Auth::user()->codigo)
+                ->orderBy('finalizado','asc')
                 ->orderBy('created_at','desc')
-                ->paginate(10);
+                ->paginate(5);
 
         return view('home',compact('tareas'));
     }

@@ -27,7 +27,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-transparent-gray navbar-laravel fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="https://ayuper.es">
                     <img src="https://ayuper.es/wp-content/uploads/2018/03/logotipo_opt-1.png" height="30" alt="">
                     
                 </a>
@@ -44,24 +44,37 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://ayuper.es/blog/">Blog</a>
-                            </li>
-                        @guest
+                            
+                        @guest  
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">encuentra tu trabajo</a>
+                                <a class="nav-link" href="{{ route('alta') }}">Localiza tu ayuper!</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('alta') }}">localiza tu ayuper!</a>
+                                <a class="nav-link" href="{{ route('register') }}">Encuentra tu trabajo</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://ayuper.es/blog/">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <img src="{{ asset('img/handphone.svg') }}" alt="">
+                                911 39 72 01
+                                </a>
                             </li>
                         @else
                             
+                            
+
                             @if(Auth::user()->notificaciones->where('estatus',1)->count() > 0)
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Notificaciones</a>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> 
+                                <img src="{{ asset('img/alarm.svg') }}" alt="" width="30px" class="d-inline"> 
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
 
@@ -111,6 +124,16 @@
                                         @csrf
                                     </form>
                                 </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://ayuper.es/blog/">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <img src="{{ asset('img/handphone.svg') }}" alt="">
+                                911 39 72 01
+                                </a>
                             </li>
                         @endguest
                     </ul>
@@ -171,8 +194,8 @@
         <footer class="text-light pt-3" style="background: #282a2b">
             <div class="container">
                  <div class="row">
-                    <div class="col text-center">
-                        <p> © Copyright 2012 - 2018 Ayuper.es Todos los derechos reservados</p>
+                    <div class="col text-left">
+                        <p> Copyright 2012 - 2017 | All Rights Reserved |  Desarrollado por beddia</p>
                     </div>
                 </div>
             </div>

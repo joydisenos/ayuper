@@ -30,6 +30,16 @@
               <div class="card item">
                <div class="card-header bg-secondary text-light d-flex justify-content-between align-items-center nombres">
                             {{ title_case($user->name) }}
+
+                            @if($user->estatus == 1)
+                            <span class="badge badge-warning text-light">
+                              Profesional
+                            </span>
+                            @elseif($user->estatus == 2)
+                            <span class="badge badge-warning text-light">
+                              Cliente
+                            </span>
+                            @endif
                 </div>
 						  <div class="card-body">
 
@@ -37,6 +47,13 @@
 						    	<div class="col emails">
 						    		<strong>Email:</strong> {{ $user->email }}
 						    	</div>
+                  @if($user->perfil != null)
+                    @if($user->perfil->tipo != null)
+                    <div class="col">
+                      <strong>Tipo de perfil:</strong> {{ $user->perfil->tipo }}
+                    </div>
+                    @endif
+                  @endif
 						    </div>
 
 
@@ -75,9 +92,14 @@
 						    			Miembro desde {{ $user->created_at->format('d-M-Y') }}
 						    		</p>
 						    	</div>
+                  @if(Auth::user()->id != $user->id)
                   <div class="col">
                     <button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#modificarusuario" data-nombre="{{$user->name}}" data-email="{{ $user->email }}" data-id="{{$user->id}}">Modificar</button>
+                    <a href="{{ route('eliminarusuario' , $user->id) }}" class="btn btn-outline-danger">
+                      Eliminar Usuario
+                    </a>
                   </div>
+                  @endif
 						    </div>
     
 

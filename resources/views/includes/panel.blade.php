@@ -17,7 +17,7 @@
       <a href="{{ route('notificacionespendientes') }}">
         <li class="list-group-item d-flex justify-content-between align-items-center">
                   Notificaciones Pendientes
-                  <span class="badge badge-warning text->light">{{ App\Notificacion::where('estatus','<',3)->where('tipo',2)->count() }}</span>
+                  <span class="badge badge-warning text-light">{{ App\Notificacion::where('estatus','<',3)->where('tipo',2)->count() }}</span>
                 </li> 
       </a>
 
