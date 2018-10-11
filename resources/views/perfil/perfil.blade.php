@@ -52,7 +52,7 @@
 
 
 						    @if($perfil == null)
-						    <div class="row">
+						    <div class="row mb-3">
 						    	<div class="col">
 						    		<h5>Debes completar tus datos!</h5>
 						    		<button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#crearperfil">Actualizar Perfil</button>
@@ -87,6 +87,7 @@
 						    	<div class="col">
 						    		<button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#modificarperfil">Actualizar Perfil</button>
 						    	</div>
+                  
                   @if(Auth::user()->perfil->tipo != null)
                   <div class="col">
                     <p>
@@ -96,6 +97,14 @@
                   @endif
 						    </div>
 						    @endif
+
+                <div class="row mb-3">
+                  
+                     <div class="col">
+                      <button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#cambiarpass">Cambio de Contraseña</button>
+                    </div>
+                 
+                </div>
 
 						    <div class="row mb-3">
 						    	<div class="col">
@@ -287,4 +296,44 @@
   </div>
 </div>
 @endif
+
+<!-- Modal Actualizar -->
+<div class="modal fade" id="cambiarpass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambio de Contraseña</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('cambiarpassword') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="modal-body">
+
+      
+
+        <div class="form-group">
+            <label for="pass">Contraseña nueva</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password_confirmation">Confirme su contraseña</label>
+            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+        </div>
+
+        
+        </div>
+
+        
+        <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-warning text-light">Guardar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 @endsection

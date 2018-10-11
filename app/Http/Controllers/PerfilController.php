@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Perfil;
 use App\Servicio;
 use App\Oficio;
@@ -111,6 +112,20 @@ class PerfilController extends Controller
         }
 
         return redirect()->back()->with('status','Datos Actualizados correctamente!');
+    }
+
+    public function password(Request $request)
+    {
+        $validatedData = $request->validate([
+        'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $userId = Auth::user()->id;
+        $user = User::findOrFail($userId);
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->back()->with('status','Clave modificada');
     }
 
     /**

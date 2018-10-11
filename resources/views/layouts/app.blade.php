@@ -107,11 +107,11 @@
                                     </a>-->
                                     @if(Auth::user()->estatus == 2)
                                     <a href="{{ route('mistareas') }}" class="dropdown-item d-flex justify-content-between align-items-center">
-                                        Mis tareas {{ Auth::user()->tareas->count() }}
+                                        Mis tareas {{ Auth::user()->tareas->where('estatus','<',3)->count() }}
                                     </a>
                                     @else
                                     <a href="{{ route('mistareas') }}" class="dropdown-item d-flex justify-content-between align-items-center">
-                                        Mis tareas {{ Auth::user()->notificaciones->count() }}
+                                        Proyectos asignados {{ Auth::user()->notificaciones->count() }}
                                     </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"

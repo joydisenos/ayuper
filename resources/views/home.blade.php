@@ -23,10 +23,22 @@
                     @foreach($tareas as $tarea)
                        @include('includes.item') 
                     @endforeach
+
+                    {{ $tareas->links() }}
                 @endif
-        {{ $tareas->links() }}
+        
             
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        $('.btn-presupuestos').click(function(){
+            $(this).parents('.elemento-item').find('.toggle-detalles').toggle('slow');
+        });
+    });
+</script>
 @endsection

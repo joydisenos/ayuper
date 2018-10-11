@@ -10559,3 +10559,7 @@ footer a:hover {
   border-top: solid thin #fff;
 }
 
+.toggle-detalles {
+  display: none;
+}
+

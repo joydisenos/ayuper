@@ -20,6 +20,19 @@
                                    <p>
                                         {{ str_limit($notificacion->tarea->descripcion,200) }}
                                    </p>
+                                    @if($notificacion->tarea->estatus == 0)
+                                     <p>
+                                         Proyecto a la Espera de la Confirmación del pago
+                                     </p>
+                                     @elseif($notificacion->tarea->estatus == 1)
+                                     <p>
+                                         Pago confirmado!
+                                     </p>
+                                    @elseif($notificacion->tarea->estatus == 2)
+                                    <p>
+                                        El proyecto fué cancelado por favor contacte con el administrador para más detalles.
+                                    </p>
+                                    @endif
                                    <p>
                                        Publicado: {{ $notificacion->tarea->created_at->format('d/m/y H:i') }}
                                    </p>

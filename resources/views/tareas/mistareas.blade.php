@@ -13,13 +13,21 @@
                 @include('includes.notificacion')
                 
                 @if($tareas->count() == 0 && Auth::user()->estatus == 2)
-                <div class="alert alert-warning bg-warning text-light text-center" role="alert">
+                <div class="alert alert-warning" role="alert">
                     <h5>
                         Aún no tienes tareas, crea una para conseguir a los mejores profesionales!
                     </h5>
-                    <a href="{{ route('nuevatarea') }}" class="btn btn-light">
+                    <a href="{{ route('nuevatarea') }}" class="btn btn-outline-secondary">
                         Crear tarea
                     </a>
+                </div>
+                @endif
+
+                @if($notificaciones->count() == 0 && Auth::user()->estatus == 1)
+                <div class="alert alert-warning" role="alert">
+                    <h5>
+                        Aún no tienes Proyectos asignados!
+                    </h5>
                 </div>
                 @endif
 
@@ -32,13 +40,15 @@
                 {{ $tareas->links() }}
 
                 @if(Auth::user()->estatus == 1)
-                @foreach($notificaciones as $notificacion)
 
-                    @include('includes.itemprofesional')
+                    @foreach($notificaciones as $notificacion)
 
-                @endforeach
+                        @include('includes.itemprofesional')
 
-                {{ $notificaciones->links() }}
+                    @endforeach
+
+                    {{ $notificaciones->links() }}
+                    
                 @endif
             
         </div>
@@ -51,4 +61,14 @@
     </a>
 </div>
 @endif
+@endsection
+@section('scripts')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        $('.btn-presupuestos').click(function(){
+            $(this).parents('.elemento-item').find('.toggle-detalles').toggle('slow');
+        });
+    });
+</script>
 @endsection

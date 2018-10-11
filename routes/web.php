@@ -37,6 +37,7 @@ Route::post('/crear/tarea', 'TareaController@store')->name('posttarea');
 Route::get('/perfil', 'PerfilController@index')->name('perfil');
 Route::post('completar/perfil', 'PerfilController@store')->name('completarperfil');
 Route::post('/actualizar/perfil/{id}', 'PerfilController@update')->name('actualizarperfil');
+Route::post('/cambio/password', 'PerfilController@password')->name('cambiarpassword');
 
 //Listado
 Route::get('/buscar/clientes', 'ListadoController@clientes')->name('clientes');
