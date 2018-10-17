@@ -112,4 +112,13 @@ class AdminController extends Controller
 
         return redirect()->back()->with('status','Usuario Actualizado');
     }
+
+    public function presupuestosnegados()
+    {
+        $presupuestos = Presupuesto::where('estatus',2)
+                                    ->orderBy('created_at','desc')
+                                    ->paginate(5);
+
+        return view('admin.presupuestos',compact('presupuestos'));
+    }
 }

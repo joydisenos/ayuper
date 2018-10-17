@@ -143,8 +143,13 @@
                                             Precio: {{ $presupuesto->precio }}
                                         </strong>
                                     </p>
+
                                     <a href="{{ route('aceptarpresupuesto', [$presupuesto->id , $tarea->id]) }}" class="btn btn-outline-warning">
                                         Aceptar Presupuesto
+                                    </a>
+
+                                    <a href="{{ route('negarpresupuesto', $presupuesto->id) }}" class="btn btn-outline-secondary">
+                                        Negar Presupuesto
                                     </a>
                                    
                                 </div>
@@ -298,5 +303,18 @@
 </div>
 @endif
 
+
+@endsection
+@section('scripts')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script>
+$(document).ready(function () {
+    $('#detallespresupuesto').on('input', function (e) {
+        if (!/^[ a-záéíóúüñ]*$/i.test(this.value)) {
+            this.value = this.value.replace(/[^ a-záéíóúüñ]+/ig,"");
+        }
+    });
+});
+</script>
 
 @endsection

@@ -63,7 +63,7 @@ class TareaController extends Controller
         $validatedData = $request->validate([
         'lista' => 'required',
         'nombre' => 'required|min:3|max:255',
-        'descripcion' => 'required|min:3',
+        'descripcion' => 'required|min:10|max:100',
         'fechainicio' => 'required',
         'fechafinal' => 'required',
         'frecuencia' => 'required',
@@ -104,6 +104,7 @@ class TareaController extends Controller
     {
         $tarea = Tarea::findOrFail($id);
         $presupuestos = Presupuesto::where('tarea_id',$id)
+                        ->where('estatus',1)
                         ->orderBy('created_at','desc')
                         ->paginate(4);
 
@@ -136,7 +137,7 @@ class TareaController extends Controller
         $validatedData = $request->validate([
         'lista' => 'required',
         'nombre' => 'required|min:3|max:255',
-        'descripcion' => 'required|min:3',
+        'descripcion' => 'required|min:10|max:100',
         'fechainicio' => 'required',
         'fechafinal' => 'required',
         'frecuencia' => 'required',

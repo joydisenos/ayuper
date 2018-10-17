@@ -7,6 +7,6 @@ Puede verificar dentro su cuenta Ayuper! la tarea que se ha publicado, así pode
 Ayuper!
 @endcomponent
 
-Saludos,<br>
+<br>
 {{ config('app.name') }}
 @endcomponent

@@ -114,6 +114,12 @@
                                         Proyectos asignados {{ Auth::user()->notificaciones->count() }}
                                     </a>
                                     @endif
+
+                                    <a href="#" class="dropdown-item">
+                                        Cómo Funciona
+                                    </a>
+
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -195,7 +201,7 @@
             <div class="container">
                  <div class="row">
                     <div class="col text-left">
-                        <p> Copyright 2012 - 2017 | All Rights Reserved |  Desarrollado por beddia</p>
+                        <p> Copyright 2012 - 2017 | All Rights Reserved |  Desarrollado por <a href="http://www.bebbia.com/" target="_blank">Bebbia</a></p>
                     </div>
                 </div>
             </div>

@@ -31,6 +31,7 @@ class VerificacionPago extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.verificacionpago');
+        return $this->subject('Verificación del pago')
+                    ->markdown('emails.verificacionpago');
     }
 }

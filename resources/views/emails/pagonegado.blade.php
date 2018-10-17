@@ -10,6 +10,6 @@
 Ayuper!
 @endcomponent
 
-Saludos,<br>
+<br>
 {{ config('app.name') }}
 @endcomponent

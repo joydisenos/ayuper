@@ -7,6 +7,6 @@ Nos encontramos a la espera de la confirmación del pago por parte del cliente, 
 Ayuper!
 @endcomponent
 
-Saludos,<br>
+<br>
 {{ config('app.name') }}
 @endcomponent

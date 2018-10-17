@@ -7,6 +7,6 @@ Te damos cordialmente la bienvenida a nuestra plataforma, donde puedes encontrar
 Ayuper!
 @endcomponent
 
-Saludos,<br>
+<br>
 {{ config('app.name') }}
 @endcomponent

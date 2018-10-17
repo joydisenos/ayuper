@@ -11,6 +11,12 @@ class AltaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function __construct()
+    {
+        return $this->middleware('guest');
+    }
+    
     public function alta()
     {
         return view('auth.alta');

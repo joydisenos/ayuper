@@ -31,6 +31,7 @@ class PagoNegado extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.pagonegado');
+        return $this->subject('Pago Negado')
+                    ->markdown('emails.pagonegado');
     }
 }

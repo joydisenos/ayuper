@@ -28,6 +28,7 @@ class Tareacercana extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.tareacercana');
+        return $this->subject('⚠ Se ha publicado una tarea cercana')
+                    ->markdown('emails.tareacercana');
     }
 }

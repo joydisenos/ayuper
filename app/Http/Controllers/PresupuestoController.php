@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Presupuesto as PresupuestoMail;
 use App\Mail\Adjudicado as AdjudicadoMail;
 use App\Mail\Presupuestoaprobado as AprobadoMail;
+use App\Mail\NegarPresupuesto as PresupuestoNegadoMail;
 
 class PresupuestoController extends Controller
 {
@@ -65,6 +66,18 @@ class PresupuestoController extends Controller
         return redirect()->back()->with('status','Felicidades aceptaste con éxito la propuesta!');
     }
 
+    public function negar($presupuesto)
+    {
+        $presupuesto = Presupuesto::findOrFail($presupuesto);
+        $presupuesto->estatus = 2;
+        $presupuesto->save();
+
+        Mail::to($presupuesto->user->email , 'Ayuper.es')
+                   ->send(new PresupuestoNegadoMail($presupuesto));
+
+        return redirect()->back()->with('status','Presupuesto Negado');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -74,7 +87,7 @@ class PresupuestoController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-        'detalles' => 'required|min:10',
+        'detalles' => 'required|min:10|max:100',
         'precio' => 'required|numeric',
         ]);
 

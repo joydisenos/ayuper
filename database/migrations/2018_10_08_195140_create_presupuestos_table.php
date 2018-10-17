@@ -19,6 +19,7 @@ class CreatePresupuestosTable extends Migration
             $table->integer('user_id');
             $table->float('precio');
             $table->text('detalles');
+            $table->integer('estatus');
             $table->timestamps();
         });
     }

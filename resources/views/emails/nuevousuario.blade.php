@@ -7,6 +7,6 @@ Se Ha registrado un nuevo usuario en la plataforma.
 Ayuper!
 @endcomponent
 
-Saludos,<br>
+<br>
 {{ config('app.name') }}
 @endcomponent

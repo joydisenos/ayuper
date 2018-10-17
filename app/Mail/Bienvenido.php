@@ -28,6 +28,7 @@ class Bienvenido extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.bienvenido');
+        return $this->subject('👨‍💻 Bienvenido a Ayuper')
+                    ->markdown('emails.bienvenido');
     }
 }

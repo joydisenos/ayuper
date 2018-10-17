@@ -28,6 +28,7 @@ class Adjudicado extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.adjudicado');
+        return $this->subject('📢 Te han adjudicado una Tarea!')
+                    ->markdown('emails.adjudicado');
     }
 }

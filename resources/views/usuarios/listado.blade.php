@@ -23,7 +23,7 @@
                                 <div class="col-sm-4 text-center">
                                    
                              @if($usuario->perfil->foto == null)
-						  	<img class="img-lista" src="https://ayuper.es/wp-content/uploads/2018/03/cropped-logotipo_opt-192x192.png" alt="Card image cap">
+						  	<img class="img-lista" src="{{ asset('img/principal.jpg') }}" alt="Card image cap">
 						  	@else
 						  	<img class="card-img-top" src="{{ 
 						  	 asset('storage/perfiles')
@@ -36,8 +36,8 @@
 
                                 </div>
                                 <div class="col-sm-8">
-                                    <p>Teléfono Móvil: {{ $usuario->perfil->telefonomovil }}</p>
-                                    <p>Teléfono Fijo: {{ $usuario->perfil->telefonofijo }}</p>
+                                    <p>Teléfono Móvil: {{ str_limit($usuario->perfil->telefonomovil,3,'XXXX') }}</p>
+                                    <p>Teléfono Fijo: {{ str_limit($usuario->perfil->telefonofijo,3,'XXXX') }}</p>
 
                                     <h5>
                                         @if($usuario->estatus == 1)

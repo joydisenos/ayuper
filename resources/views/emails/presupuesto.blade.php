@@ -7,6 +7,6 @@ Te invitamos a revisar tu cuenta Ayuper! para verificar esta propuesta de uno de
 Ayuper!
 @endcomponent
 
-Saludos,<br>
+<br>
 {{ config('app.name') }}
 @endcomponent

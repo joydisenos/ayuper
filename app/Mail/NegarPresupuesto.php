@@ -6,9 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Tarea;
+use App\Presupuesto;
 
-class PagoVerificado extends Mailable
+class NegarPresupuesto extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,11 +18,11 @@ class PagoVerificado extends Mailable
      * @return void
      */
     
-    public $tarea;
+    public $presupuesto;
 
-    public function __construct(Tarea $tarea)
+    public function __construct(Presupuesto $presupuesto)
     {
-        $this->tarea = $tarea;
+        $this->presupuesto = $presupuesto;
     }
 
     /**
@@ -32,7 +32,7 @@ class PagoVerificado extends Mailable
      */
     public function build()
     {
-        return $this->subject('💶 Se ha verificado el Pago')
-                    ->markdown('emails.pagoverificado');
+        return $this->subject('El Cliente ha negado su presupuesto')
+                    ->markdown('emails.presupuestonegado');
     }
 }

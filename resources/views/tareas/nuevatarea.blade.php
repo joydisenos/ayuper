@@ -38,12 +38,12 @@
 
         <div class="form-group">
             <label for="tarea">Nombre de la Tarea</label>
-            <input type="text" class="form-control" id="tarea" name="nombre" placeholder="Nombre de la Tarea">
+            <input type="text" class="form-control filtronum" id="tarea" name="nombre" placeholder="Nombre de la Tarea">
         </div>
 
         <div class="form-group">
             <label for="descripcion">Descripción detallada</label>
-            <textarea name="descripcion" id="descripcion" class="form-control" rows="10"></textarea>
+            <textarea name="descripcion" id="descripcion" class="form-control filtronum" rows="10"></textarea>
         </div>  
 
         <div class="form-group">
@@ -64,9 +64,11 @@
                 <div class="col">
                     <label for="frecuencia">Frecuencia</label>
                     <select name="frecuencia" id="frecuencia" name="frecuencia" class="form-control">
-                        <option value="sólo una vez">Sólo una vez</option>
-                        <option value="cada semana">Cada semana</option>
-                        <option value="cada dos semanas">Cada dos semanas</option>
+                        <option value="1 Vez por Semana">1 Vez por Semana</option>
+                        <option value="2 Veces por Semana">2 Veces por Semana</option>
+                        <option value="3 Veces por Semana">3 Veces por Semana</option>
+                        <option value="4 Veces por Semana">4 Veces por Semana</option>
+                        <option value="5 Veces por Semana">5 Veces por Semana</option>
                     </select>
                 </div>
             </div>
@@ -94,4 +96,17 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script>
+$(document).ready(function () {
+    $('.filtronum').on('input', function (e) {
+        if (!/^[ a-záéíóúüñ]*$/i.test(this.value)) {
+            this.value = this.value.replace(/[^ a-záéíóúüñ]+/ig,"");
+        }
+    });
+});
+</script>
+
 @endsection

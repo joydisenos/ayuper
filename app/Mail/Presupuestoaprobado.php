@@ -28,6 +28,7 @@ class Presupuestoaprobado extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.presupuestoaprobado');
+        return $this->subject('🚥 Su presupuesto fué aprobado')
+                    ->markdown('emails.presupuestoaprobado');
     }
 }

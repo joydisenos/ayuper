@@ -7,6 +7,6 @@ Se ha aprobado un presupuesto dentro de la plataforma.
 Ayuper!
 @endcomponent
 
-Saludos,<br>
+<br>
 {{ config('app.name') }}
 @endcomponent

@@ -31,6 +31,7 @@ class DepositoVerificado extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.depositoverificado');
+        return $this->subject('✔ Depósito verificado')
+                    ->markdown('emails.depositoverificado');
     }
 }

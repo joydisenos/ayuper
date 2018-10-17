@@ -46,6 +46,7 @@ Route::get('/buscar/profesionales', 'ListadoController@profesionales')->name('pr
 //Presupuesto
 Route::post('/enviar/presupuesto', 'PresupuestoController@store')->name('enviarpresupuesto');
 Route::get('/aceptar/{presupuesto}/{tarea}', 'PresupuestoController@aceptar')->name('aceptarpresupuesto');
+Route::get('/negar/{presupuesto}', 'PresupuestoController@negar')->name('negarpresupuesto');
 
 //Admin
 Route::get('/todos/usuarios', 'AdminController@usuarios')->name('usuariosregistrados');
@@ -53,6 +54,7 @@ Route::get('/eliminar/usuario/{id}', 'AdminController@eliminarusuario')->name('e
 Route::get('/todas/tareas', 'AdminController@tareas')->name('todastareas');
 Route::get('/todas/servicios', 'AdminController@servicios')->name('servicios');
 Route::post('/actualizar/usuario', 'AdminController@actualizarusuario')->name('actualizarusuario');
+Route::get('/presupuestos/negados', 'AdminController@presupuestosnegados')->name('presupuestosnegados');
 
 	//Servicios
 	Route::post('/nuevo/servicio', 'ServicioController@store')->name('nuevoservicio');
