@@ -311,18 +311,28 @@
         @csrf
         <div class="modal-body">
 
+    
+       
+          <div class="form-group">
+            <label class="sr-only" for="password">Contraseña nueva</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-warning show-pass"> <img src="{{ asset('img/eye-open.svg') }}" width="20px" alt=""> </div>
+            </div>
+            <input type="password" name="password" class="form-control pass" id="password" placeholder="Contraseña nueva">
+          </div>
+          </div>
+
+          <div class="form-group">
+            <label class="sr-only" for="password_confirmation">Confirme su contraseña</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-warning show-pass"> <img src="{{ asset('img/eye-open.svg') }}" width="20px" alt=""> </div>
+            </div>
+            <input type="password" class="form-control pass" name="password_confirmation" id="password_confirmation" placeholder="Confirme su contraseña">
+          </div>
+          </div>
       
-
-        <div class="form-group">
-            <label for="pass">Contraseña nueva</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-
-        <div class="form-group">
-            <label for="password_confirmation">Confirme su contraseña</label>
-            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
-        </div>
-
         
         </div>
 
@@ -335,5 +345,22 @@
     </div>
   </div>
 </div>
+
+@endsection
+@section('scripts')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+
+
+<script>
+$(document).ready(function () {
+   $('.show-pass').click(function () {
+    if ($(this).parents('.input-group').find('.pass').attr('type') === 'text') {
+     $(this).parents('.input-group').find('.pass').attr('type', 'password');
+    } else {
+     $(this).parents('.input-group').find('.pass').attr('type', 'text');
+    }
+   });
+  });
+</script>
 
 @endsection
