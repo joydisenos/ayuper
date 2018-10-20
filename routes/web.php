@@ -64,3 +64,6 @@ Route::get('/presupuestos/negados', 'AdminController@presupuestosnegados')->name
 Route::get('/notificacion/{id}', 'NotificacionController@notificacion')->name('notificacion');
 Route::get('/notificaciones/pendientes', 'NotificacionController@notificaciones')->name('notificacionespendientes');
 Route::get('/not/{id}/{estatus}', 'NotificacionController@estatus')->name('notificacionestatus');
+
+//Como Funciona
+Route::get('/como-funciona', 'FuncionaController@index')->name('funciona');

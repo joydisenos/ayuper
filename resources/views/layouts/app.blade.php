@@ -115,7 +115,7 @@
                                     </a>
                                     @endif
 
-                                    <a href="#" class="dropdown-item">
+                                    <a href="{{ route('funciona') }}" class="dropdown-item">
                                         Cómo Funciona
                                     </a>
 
