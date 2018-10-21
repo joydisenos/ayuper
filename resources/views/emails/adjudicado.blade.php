@@ -4,9 +4,9 @@
 Nos encontramos a la espera de la confirmación del pago por parte del cliente, ingresa a tu cuenta Ayuper! para más detalles.
 
 @component('mail::button', ['url' => 'https://ayuper.es/'])
-Ayuper!
+Verificalo!
 @endcomponent
 
 <br>
-{{ config('app.name') }}
+Saludos,
 @endcomponent

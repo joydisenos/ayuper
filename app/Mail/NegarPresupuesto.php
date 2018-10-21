@@ -32,7 +32,7 @@ class NegarPresupuesto extends Mailable
      */
     public function build()
     {
-        return $this->subject('El Cliente ha negado su presupuesto')
+        return $this->subject('⛔ El Cliente ha negado su presupuesto')
                     ->markdown('emails.presupuestonegado');
     }
 }

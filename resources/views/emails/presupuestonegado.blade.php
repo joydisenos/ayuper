@@ -4,9 +4,9 @@
 El Cliente ha negado su presupuesto, pero todavía quedan más tareas por ser asignadas, permanece atento en nuestra plataforma.
 
 @component('mail::button', ['url' => 'https://ayuper.es/'])
-Ayuper!
+Verificalo!
 @endcomponent
 
 <br>
-{{ config('app.name') }}
+Saludos,
 @endcomponent

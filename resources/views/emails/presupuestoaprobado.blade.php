@@ -4,9 +4,9 @@
 Se ha aprobado un presupuesto dentro de la plataforma.
 
 @component('mail::button', ['url' => 'https://ayuper.es/'])
-Ayuper!
+Verificalo!
 @endcomponent
 
 <br>
-{{ config('app.name') }}
+Saludos,
 @endcomponent

@@ -4,9 +4,9 @@
 Te damos cordialmente la bienvenida a nuestra plataforma, donde puedes encontrar profesionales y clientes en un solo sitio, puedes acceder a nuestra plataforma desde el siguiente enlace.
 
 @component('mail::button', ['url' => 'https://ayuper.es/'])
-Ayuper!
+Verificalo!
 @endcomponent
 
 <br>
-{{ config('app.name') }}
+Saludos,
 @endcomponent

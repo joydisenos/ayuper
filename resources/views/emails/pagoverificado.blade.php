@@ -17,9 +17,9 @@
 
 
 @component('mail::button', ['url' => 'https://ayuper.es/'])
-Ayuper!
+Verificalo!
 @endcomponent
 
 <br>
-{{ config('app.name') }}
+Saludos,
 @endcomponent
