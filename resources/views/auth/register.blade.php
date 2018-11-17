@@ -12,6 +12,7 @@
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
                         <input type="hidden" value="1" name="estatus">
+                        <input type="hidden" value="" name="referido">
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 

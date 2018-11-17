@@ -56,7 +56,6 @@ class PerfilController extends Controller
             $validatedData = $request->validate([
             'foto' => 'required|image',
             'tipo' => 'required',
-            'dni' => 'required',
             'telefonomovil' => 'required',
             'telefonofijo' => 'required',
             'servicios' => 'required',
@@ -64,7 +63,6 @@ class PerfilController extends Controller
             ]);
         }else{
             $validatedData = $request->validate([
-            'dni' => 'required',
             'telefonomovil' => 'required',
             'telefonofijo' => 'required',
             'servicios' => 'required',
@@ -89,7 +87,7 @@ class PerfilController extends Controller
         {
             $perfil->foto = $nombre;
         }
-        $perfil->dni = $request->dni;
+        $perfil->dni = '';
         if(Auth::user()->estatus == 1)
         {
             $perfil->tipo = $request->tipo;
@@ -160,7 +158,6 @@ class PerfilController extends Controller
     public function update(Request $request,$id)
     {
         $validatedData = $request->validate([
-        'dni' => 'required',
         'telefonomovil' => 'required',
         'telefonofijo' => 'required',
         'servicios' => 'required',
@@ -184,7 +181,7 @@ class PerfilController extends Controller
         {
             $perfil->foto = $nombre;
         }
-        $perfil->dni = $request->dni;
+        $perfil->dni = '';
         if(Auth::user()->estatus == 1)
         {
             $perfil->tipo = $request->tipo;

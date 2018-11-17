@@ -27,9 +27,10 @@ class AltaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function referido($user)
     {
-        //
+
+        return view('auth.referido',compact('user'));
     }
 
     /**

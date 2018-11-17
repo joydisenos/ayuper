@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','estatus',
+        'name', 'email', 'password','estatus','referido'
     ];
 
     /**
@@ -58,5 +58,15 @@ class User extends Authenticatable
     public function notificaciones()
     {
         return $this->hasMany(Notificacion::class);
+    }
+
+    public function referidos()
+    {
+        return $this->hasMany(Referidos::class, 'referido_id');
+    }
+
+    public function verificar()
+    {
+        return $this->hasOne(Referidos::class);
     }
 }

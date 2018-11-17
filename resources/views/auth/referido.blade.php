@@ -6,13 +6,13 @@
         <div class="col-md-8">
             @include('includes.errors')
             <div class="card">
-                <div class="card-header bg-secondary text-light">Date de alta y localiza tu Ayuper màs cercano!</div>
+                <div class="card-header bg-secondary text-light">Date de alta y localiza tu Ayuper más cercano!</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
                         <input type="hidden" value="2" name="estatus">
-                        <input type="hidden" value="" name="referido">
+                        <input type="hidden" value="{{$user}}" name="referido">
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 

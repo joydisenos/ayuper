@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('estatus')->default(1);
             $table->integer('codigo')->nullable();
+            $table->integer('referido')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

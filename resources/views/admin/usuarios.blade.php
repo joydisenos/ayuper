@@ -60,9 +60,9 @@
 						    @if($user->perfil != null)
 						    <div class="row mb-3">
                   <div class="col">
-                    <p class="card-text">
+                    <!--<p class="card-text">
                       <strong>DNI:</strong> {{ $user->perfil->dni }}
-                    </p>
+                    </p>-->
                   </div>
                   <div class="col">
                     <p class="card-text">

@@ -85,7 +85,9 @@ class TareaController extends Controller
         $tarea->codigo = $request->codigo;
         $tarea->save();
 
-        $users = User::where( 'codigo' , $request->codigo )->get();
+        $users = User::where( 'codigo' , $request->codigo )
+                        ->where('estatus' , 1)
+                        ->get();
 
         foreach ($users as $user) {
             Mail::to($user->email)->send(new MailTarea());

@@ -59,7 +59,7 @@
 						    	</div>
 						    </div>
 						    @else
-						     <div class="row mb-3">
+						     <!--<div class="row mb-3">
 						    	<div class="col">
 						    		<p class="card-text">
 						    			<strong>DNI:</strong> {{ Auth::user()->perfil->dni }}
@@ -70,7 +70,7 @@
                       <strong>Código Postal:</strong> {{ Auth::user()->codigo }}
                     </p>
                   </div>
-						    </div>
+						    </div>-->
 
 						    <div class="row mb-3">
 						    	<div class="col">
@@ -85,9 +85,24 @@
 
 						    <div class="row mb-3">
 						    	<div class="col">
+                    @if(Auth::user()->perfil !=null && Auth::user()->estatus == 2)
+            
+                    <p>
+                      Puedes Referir a un conocido por este link!
+                    </p>
+                    <p>
+                      <strong>
+                        {{route('alta')}}/{{Auth::user()->id}}
+                      </strong>
+                    </p>
+             
+                  @endif 
+
 						    		<button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#modificarperfil">Actualizar Perfil</button>
 						    	</div>
                   
+                  
+
                   @if(Auth::user()->perfil->tipo != null)
                   <div class="col">
                     <p>
@@ -148,10 +163,10 @@
 			</div>
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
             <label for="dni">Coloque su DNI</label>
             <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI">
-        </div>
+        </div>-->
 
         <div class="form-group">
             <label for="codigo">Coloque su Código Postal</label>
@@ -227,10 +242,10 @@
 			</div>
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
             <label for="dni">Coloque su DNI</label>
             <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" value="{{ Auth::user()->perfil->dni }}">
-        </div>
+        </div>-->
 
         <div class="form-group">
             <label for="codigo">Coloque su Código Postal</label>

@@ -141,6 +141,11 @@
                                     <p>
                                         <strong>
                                             Precio: {{ $presupuesto->precio }}
+                                            
+                                            @if(Auth::user()->referido != null && Auth::user()->verificar != null && Auth::user()->verificar->descuento == null)
+                                            - 5% = {{  $presupuesto->precio - (($presupuesto->precio * 5) / 100) }}
+                                            @endif
+
                                         </strong>
                                     </p>
 
@@ -221,6 +226,12 @@
                                     <p>
                                         <strong>
                                             Precio: {{ $tarea->presupuesto->precio }}
+
+                                            @if(Auth::user()->referido != null && Auth::user()->verificar != null && Auth::user()->verificar->descuento == null)
+                                            - 5% = {{  $tarea->presupuesto->precio - (($tarea->presupuesto->precio * 5) / 100) }}
+                                            @endif
+
+
                                         </strong>
                                     </p>
                                    

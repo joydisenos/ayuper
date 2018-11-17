@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Notificacion;
 use App\Tarea;
+use App\User;
+use App\Referidos;
 use App\Mail\PagoVerificado as MailPago;
 use App\Mail\DepositoVerificado as MailDeposito;
 use App\Mail\VerificacionPago as MailVerificacion;
@@ -48,9 +50,22 @@ class NotificacionController extends Controller
 
         $cliente = $tarea->user->email;
         $profesional = $tarea->presupuesto->user->email;
-        $admin = 'info@ayuper.es';
+        $admin = 'hola@ayuper.es';
+
+        $clienteDef = User::findOrFail($tarea->user->id);
+
+        
+
 
         if($estatus == 1){
+
+            if($clienteDef->verificar->descuento == null)
+            {
+                $ref = Referidos::where('user_id' , $clienteDef->id)->first();
+                $ref->descuento = 'ofertado';
+                $ref->save();
+            }
+
             Mail::to($cliente , 'Ayuper.es')
                    ->send(new MailPago($tarea));
             Mail::to($profesional , 'Ayuper.es')

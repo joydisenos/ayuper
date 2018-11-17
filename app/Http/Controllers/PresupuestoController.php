@@ -60,7 +60,7 @@ class PresupuestoController extends Controller
         Mail::to($mail , 'Ayuper.es')
                    ->send(new AdjudicadoMail());
 
-        Mail::to('info@ayuper.es' , 'Ayuper.es')
+        Mail::to('hola@ayuper.es' , 'Ayuper.es')
                    ->send(new AprobadoMail());
 
         return redirect()->back()->with('status','Felicidades aceptaste con éxito la propuesta!');

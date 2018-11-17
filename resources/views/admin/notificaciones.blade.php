@@ -37,7 +37,9 @@
 						    			<tr>
 						    				<td>{{$not->tarea->user->name}}</td>
 						    				<td>{{$not->tarea->user->email}}</td>
-						    				<td>{{$not->tarea->nombre}}</td>
+						    				<td><a href="{{route('tarea', $not->tarea->id)}}">
+						    					{{$not->tarea->nombre}}
+						    				</a></td>
 						    				<td>{{$not->tarea->presupuesto->user->name}}</td>
 						    				<td>{{$not->tarea->presupuesto->user->email}}</td>
 						    				<td>

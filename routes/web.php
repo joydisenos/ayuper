@@ -20,6 +20,7 @@ Route::get('/notificaciones', 'SiteController@index')->name('notificaciones');
 
 //alta
 Route::get('/alta', 'AltaController@alta')->name('alta');
+Route::get('/alta/{user}', 'AltaController@referido')->name('referido');
 
 //Bienvenida
 Route::get('/bienvenido', 'BienvenidaController@bienvenida')->name('bienvenida');
