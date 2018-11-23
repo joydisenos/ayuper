@@ -9,6 +9,8 @@
                 <div class="card-header bg-secondary text-light">Date de alta y localiza tu Ayuper màs cercano!</div>
 
                 <div class="card-body">
+
+                   
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
                         <input type="hidden" value="2" name="estatus">

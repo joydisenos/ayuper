@@ -9,6 +9,12 @@
                 <div class="card-header bg-secondary text-light">Date de alta y localiza tu Ayuper más cercano!</div>
 
                 <div class="card-body">
+                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Felicidades!</strong> por ser un cliente referido recibirás un 5% de Descuento en tu primer consumo
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
                         <input type="hidden" value="2" name="estatus">

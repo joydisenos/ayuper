@@ -88,7 +88,7 @@
                     @if(Auth::user()->perfil !=null && Auth::user()->estatus == 2)
             
                     <p>
-                      Puedes Referir a un conocido por este link!
+                      Puedes Referir a un conocido por este link, compartelo y recibirá un 5% de Descuento en su primer consumo!
                     </p>
                     <p>
                       <strong>
