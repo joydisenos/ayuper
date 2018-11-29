@@ -56,6 +56,7 @@ Route::get('/todas/tareas', 'AdminController@tareas')->name('todastareas');
 Route::get('/todas/servicios', 'AdminController@servicios')->name('servicios');
 Route::post('/actualizar/usuario', 'AdminController@actualizarusuario')->name('actualizarusuario');
 Route::get('/presupuestos/negados', 'AdminController@presupuestosnegados')->name('presupuestosnegados');
+Route::get('/usuarios/referidos', 'AdminController@referidos')->name('referidos');
 
 	//Servicios
 	Route::post('/nuevo/servicio', 'ServicioController@store')->name('nuevoservicio');

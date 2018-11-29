@@ -48,6 +48,12 @@
                 </li> 
       </a>
 
+      <a href="{{ route('referidos') }}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Referidos
+                </li> 
+      </a>
+
       <a href="{{ route('todastareas') }}">
         <li class="list-group-item d-flex justify-content-between align-items-center">
                   Tareas

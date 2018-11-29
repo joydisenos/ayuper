@@ -121,4 +121,11 @@ class AdminController extends Controller
 
         return view('admin.presupuestos',compact('presupuestos'));
     }
+
+    public function referidos()
+    {
+        $users = User::all();
+
+        return view('admin.referidos' , compact('users'));
+    }
 }

@@ -54,9 +54,15 @@
 						    @if($perfil == null)
 						    <div class="row mb-3">
 						    	<div class="col">
+                    
+
+
 						    		<h5>Debes completar tus datos!</h5>
 						    		<button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#crearperfil">Actualizar Perfil</button>
 						    	</div>
+                  <div class="col">
+                    @include('includes.invitacion')
+                  </div>
 						    </div>
 						    @else
 						     <!--<div class="row mb-3">
@@ -85,18 +91,10 @@
 
 						    <div class="row mb-3">
 						    	<div class="col">
-                    @if(Auth::user()->perfil !=null && Auth::user()->estatus == 2)
-            
-                    <p>
-                      Puedes Referir a un conocido por este link, compartelo y recibirá un 5% de Descuento en su primer consumo!
-                    </p>
-                    <p>
-                      <strong>
-                        {{route('alta')}}/{{Auth::user()->id}}
-                      </strong>
-                    </p>
+                    
+            @include('includes.invitacion')
              
-                  @endif 
+                  
 
 						    		<button type="button" class="btn btn-warning text-light" data-toggle="modal" data-target="#modificarperfil">Actualizar Perfil</button>
 						    	</div>
