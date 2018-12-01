@@ -10,6 +10,7 @@ use App\Oficio;
 use App\Perfil;
 use App\Presupuesto;
 use App\Notificacion;
+use App\Referidos;
 
 class AdminController extends Controller
 {
@@ -127,5 +128,14 @@ class AdminController extends Controller
         $users = User::all();
 
         return view('admin.referidos' , compact('users'));
+    }
+
+    public function delreferidos($id)
+    {
+        $referido = Referidos::findOrFail($id);
+        $referido->estatus = 0;
+        $referido->save();
+
+        return redirect()->back()->with('status','Referido eliminado');
     }
 }

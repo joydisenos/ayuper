@@ -89,7 +89,7 @@
 						    <div class="row mb-3">
 						    	<div class="col">
 						    		<p class="text-center">
-						    			<strong>Referidos: {{ $user->referidos->count() }}</strong>
+						    			<strong>Referidos: {{ $user->referidos->where('estatus' , 1)->count() }}</strong>
 						    		</p>
 						    	</div>
                  
@@ -123,11 +123,17 @@
                 <thead>
                   <th>Nombre</th>
                   <th>Email</th>
+                  <th>Eliminar</th>
                 </thead>
-                @foreach($user->referidos as $referido)
+                @foreach($user->referidos->where('estatus' , 1) as $referido)
                 <tr>
                   <td>{{$referido->user->name}}</td>
                   <td>{{$referido->user->email}}</td>
+                  <td>
+                    <a href="{{ route('delreferido' , $referido->id ) }}" class="btn btn-primary" style="color:#fff">
+                      x
+                    </a>
+                  </td>
                 </tr>
                 @endforeach
               </table>
