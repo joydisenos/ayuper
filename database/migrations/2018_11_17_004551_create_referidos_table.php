@@ -18,6 +18,7 @@ class CreateReferidosTable extends Migration
             $table->integer('referido_id');
             $table->integer('user_id');
             $table->string('descuento')->nullable();
+            $table->integer('estatus')->default(1);
             $table->timestamps();
         });
     }

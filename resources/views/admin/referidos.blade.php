@@ -129,8 +129,7 @@
                 <tr>
                   <td>{{$referido->user->name}}</td>
                   <td>{{$referido->user->email}}</td>
-                  <td>
-                    <a href="{{ route('delreferido' , $referido->id ) }}" class="btn btn-primary" style="color:#fff">
+                  <td                    <a href="{{ route('delreferido' , [$referido->id] ) }}" class="btn btn-primary" style="color:#fff">
                       x
                     </a>
                   </td>

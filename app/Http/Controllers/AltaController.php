@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class AltaController extends Controller
 {
@@ -29,8 +30,15 @@ class AltaController extends Controller
      */
     public function referido($user)
     {
+        $verificar = User::find($user);
 
-        return view('auth.referido',compact('user'));
+        if($verificar != null)
+        {
+            return view('auth.referido',compact('user'));
+        }else{
+            return redirect('login')->with('status','El link suministrado no corresponde a nuestros registros');
+        }
+        
     }
 
     /**
