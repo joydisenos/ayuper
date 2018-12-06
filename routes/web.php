@@ -39,6 +39,7 @@ Route::get('/perfil', 'PerfilController@index')->name('perfil');
 Route::post('completar/perfil', 'PerfilController@store')->name('completarperfil');
 Route::post('/actualizar/perfil/{id}', 'PerfilController@update')->name('actualizarperfil');
 Route::post('/cambio/password', 'PerfilController@password')->name('cambiarpassword');
+Route::post('/invitar', 'PerfilController@invitacion')->name('invitacion');
 
 //Listado
 Route::get('/buscar/clientes', 'ListadoController@clientes')->name('clientes');

@@ -359,6 +359,37 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="invitacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enviar Invitación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('invitacion') }}" method="post">
+          <div class="modal-body">
+          @csrf
+         <div class="form-group">
+            <label for="invitado">Comparte tu enlace al Email</label>
+            <input type="email" class="form-control" name="email" id="invitado" aria-describedby="emailHelp" placeholder="Email a compartir">
+            <small id="emailHelp" class="form-text text-muted">Envía una invitación por correo y tu invitado recibirá un 5% de Descuento en su primer consumo!</small>
+          </div>
+          
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary text-light">Invitar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
 @endsection
 @section('scripts')
 <script src="{{asset('js/jquery.min.js')}}"></script>

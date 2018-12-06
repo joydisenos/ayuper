@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\Invitacion as InvitacionMail;
+use Illuminate\Support\Facades\Mail;
 use App\Perfil;
 use App\Servicio;
 use App\Oficio;
@@ -37,9 +39,18 @@ class PerfilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function invitacion(Request $request)
     {
-        //
+         $validatedData = $request->validate([
+            'email' => 'required|email',
+            ]);
+
+        $user = User::findOrFail(Auth::user()->id);
+
+        Mail::to($request->email , 'Ayuper.es')
+                   ->send(new InvitacionMail($user));
+
+        return redirect()->back()->with('status','Invitación Enviada a '.$request->email);
     }
 
     /**

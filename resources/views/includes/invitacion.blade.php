@@ -6,4 +6,7 @@
                       <strong>
                         {{route('alta')}}/{{Auth::user()->id}}
                       </strong>
+                      <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#invitacion" >
+						  Compartir link
+						</button>
                     </p>
