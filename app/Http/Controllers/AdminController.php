@@ -77,7 +77,7 @@ class AdminController extends Controller
         $referidos = Referidos::where('user_id',$id)->get();
 
         foreach ($referidos as $ref) {
-            $referido->delete();
+            $ref->delete();
         }
 
         $usuario = User::findOrFail($id);
