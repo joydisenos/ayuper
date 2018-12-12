@@ -59,7 +59,7 @@ class NotificacionController extends Controller
 
         if($estatus == 1){
 
-            if($clienteDef->verificar->descuento == null)
+            if( $clienteDef->verificar != null && $clienteDef->verificar->descuento == null)
             {
                 $ref = Referidos::where('user_id' , $clienteDef->id)->first();
                 $ref->descuento = 'ofertado';
